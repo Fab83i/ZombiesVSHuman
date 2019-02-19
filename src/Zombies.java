@@ -43,9 +43,8 @@ public Position getZposition() {
 	}
 
 
-public boolean isSamePosition() {
-	if Zombies.getZposition()== Humain.
+
+
 	
 }
 	
-}
