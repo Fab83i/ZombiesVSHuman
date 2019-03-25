@@ -108,22 +108,23 @@ public class MaJFrame extends JFrame implements KeyListener {
 	    }
 		
 	 @Override
-	    public void keyReleased(KeyEvent e) {
-	        if(e.getKeyCode()== KeyEvent.VK_RIGHT) {
-	        	System.out.println("ça marche");
+	public void keyReleased(KeyEvent e) {
+		 int direction;
+		 if(e.getKeyCode()== KeyEvent.VK_RIGHT) {
+			 direction = 1 ;
+	        	
 	        }
-	            
-	        if (e.getKeyCode()== KeyEvent.VK_LEFT) {
-	        	 //Aller à gauche
+		 if (e.getKeyCode()== KeyEvent.VK_LEFT) {
+			 direction = 2 ;
+	        	
 	        }
-	           
-	        if(e.getKeyCode()== KeyEvent.VK_DOWN) {
-	        	//Monter
+		 if(e.getKeyCode()== KeyEvent.VK_DOWN) {
+			 direction = 3 ;
 	        }
-	            
-	        if(e.getKeyCode()== KeyEvent.VK_UP) {
-	        	//Descendre
-	        }
+		 if(e.getKeyCode()== KeyEvent.VK_UP) {
+			 direction = 4 ;
+	        }  
+	        
 	            
 	    }
 

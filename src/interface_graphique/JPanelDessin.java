@@ -12,15 +12,19 @@ public class JPanelDessin extends JPanel {
 
 	private BufferedImage image;
 	private BufferedImage humain;
+	private BufferedImage arrive ;
 
 
 
 	/**
 	 * Create the panel.
 	 */
+	
+
+	
 	public JPanelDessin() {
 		
-// Importation des images zombies et humains
+// Importation des images zombies et humains et arrive spoon aléatoire
 		
 		super();
 		try {
@@ -37,6 +41,13 @@ public class JPanelDessin extends JPanel {
 		catch (IOException bu) {
 			System.out.println(bu);
 			humain=null;
+		       }
+		try {
+			arrive = ImageIO.read(new File("images/617yFjlJXiL._SY355_.jpg"));
+		       } 
+		catch (IOException bu) {
+			System.out.println(bu);
+			arrive=null;
 		       }
 
 	}
@@ -74,11 +85,14 @@ public class JPanelDessin extends JPanel {
 
 //Affichage d'un humain		
 		
-		if(image!=null) {
+		if(humain!=null) {
 			g.drawImage(humain, (this.getWidth()*6)/20, (this.getHeight()*18)/20 , this.getWidth()/20, this.getHeight()/20 , null);
 			}
 		
-
-				
+// Affichage aléatoire de la case d'arrivée
+		if(arrive!=null) {
+			g.drawImage(arrive, (this.getWidth()* Math.ceil(Math.random()*21))/20, (this.getHeight()* Math.ceil(Math.random()*21))/20 , this.getWidth()/20, this.getHeight()/20 , null);
+			}
 	}
+	
 }

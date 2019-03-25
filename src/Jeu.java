@@ -1,6 +1,6 @@
 
 public class Jeu {
-	int nbTours,difficulté;
+	int nbTours,difficulte;
 	boolean marche;
 	
 	
@@ -10,11 +10,11 @@ public class Jeu {
 	public void setNbTours(int nbTours) {
 		this.nbTours = nbTours;
 	}
-	public int getDifficulté() {
-		return difficulté;
+	public int getDifficulte() {
+		return difficulte;
 	}
-	public void setDifficulté(int difficulté) {
-		this.difficulté = difficulté;
+	public void setDifficulte(int difficulte) {
+		this.difficulte = difficulte;
 	}
 	public boolean isMarche() {
 		return marche;
@@ -25,7 +25,7 @@ public class Jeu {
 	public Jeu( boolean marche) {
 		super();
 		this.nbTours = 0;
-		this.difficulté = 0;
+		this.difficulte = 0;
 		this.marche = marche;
 	}
 

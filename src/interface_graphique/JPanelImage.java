@@ -9,6 +9,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+
+
+// Je ne sais pas à quoi ça sert
+
 public class JPanelImage extends JPanel {
 	
 	private static final long serialVersionUID = 3641337531772753865L;
