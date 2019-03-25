@@ -3,6 +3,7 @@ public class Zombies {
 	Position zposition;
 	boolean voirHumain;
 	boolean tourZomb;
+	
 
 
 public Zombies(Position zposition, boolean voirHumain, boolean tourZomb) {
@@ -43,7 +44,12 @@ public Position getZposition() {
 	}
 
 
-
+public boolean isSamePosition(){
+	if Zombies.getzPosition()==Humain.gethPosition();
+		
+		
+	
+}
 
 	
 }
