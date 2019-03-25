@@ -27,12 +27,15 @@ public class Humain {
 	public void setEstBruyant(boolean estBruyant) {
 		this.estBruyant = estBruyant;
 	}
-	public Humain(Position hPosition, String sexe, boolean tourHumain, boolean estBruyant) {
+	public Humain(Position hPosition, String sexe, boolean tourHumain) {
 		super();
 		this.hPosition = hPosition;
 		this.sexe = sexe;
 		this.tourHumain = tourHumain;
-		this.estBruyant = estBruyant;
+		this.estBruyant = false;
+	}
+	public Humain() {
+		super();
 	}
 	
 
