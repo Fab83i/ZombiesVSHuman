@@ -20,6 +20,8 @@ public class JPanelDessin extends JPanel {
 	 */
 	public JPanelDessin() {
 		
+// Importation des images zombies et humains
+		
 		super();
 		try {
 			image = ImageIO.read(new File("images/burns.jpg"));
@@ -48,6 +50,7 @@ public class JPanelDessin extends JPanel {
 		// Couleur du fond = blanc
 		this.setBackground(Color.white);
 
+// Création d'un quadrillage
 		
 		g.setColor(Color.blue);
 		for ( int i=0 ; i < 20 ; i++) {
@@ -57,14 +60,19 @@ public class JPanelDessin extends JPanel {
 			g.drawLine(((this.getWidth())*i)/20,0,((this.getWidth())*i)/20,this.getHeight());
 		}
 	
-
+//Affichage d'un zombie
+		
 		if(image!=null) {
 			g.drawImage(image, (this.getWidth()*1)/20, (this.getHeight()*1)/20 , this.getWidth()/20, this.getHeight()/20 , null);
 			}
 		
+//Affichage d'un zombie
+		
 		if(image!=null) {
 			g.drawImage(image, (this.getWidth()*10)/20, (this.getHeight()*18)/20 , this.getWidth()/20, this.getHeight()/20 , null);
 			}
+
+//Affichage d'un humain		
 		
 		if(image!=null) {
 			g.drawImage(humain, (this.getWidth()*6)/20, (this.getHeight()*18)/20 , this.getWidth()/20, this.getHeight()/20 , null);

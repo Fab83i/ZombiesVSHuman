@@ -22,9 +22,8 @@ import java.awt.event.KeyListener;
 
 
 
-public class MaJFrame extends JFrame {
+public class MaJFrame extends JFrame implements KeyListener {
 	private JPanel contentPane;
-	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -42,7 +41,7 @@ public class MaJFrame extends JFrame {
 		});
 	}
 
-	// Construction de la JFrame 
+// Construction de la JFrame 
 	
 	public MaJFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,6 +86,12 @@ public class MaJFrame extends JFrame {
 		JPanelDessin Dessin = new JPanelDessin();
 		view.add(Dessin, BorderLayout.CENTER);
 		
+
+        addKeyListener(this);
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
+    
+		
 		
 	}
 	
@@ -97,10 +102,12 @@ public class MaJFrame extends JFrame {
 	
 	
 	 
-	 public void keyPressed(KeyEvent e) {
+	@Override
+	public void keyPressed(KeyEvent e) {
 	        System.out.println("keyPressed");
 	    }
-
+		
+	 @Override
 	    public void keyReleased(KeyEvent e) {
 	        if(e.getKeyCode()== KeyEvent.VK_RIGHT) {
 	        	System.out.println("ça marche");
@@ -119,6 +126,12 @@ public class MaJFrame extends JFrame {
 	        }
 	            
 	    }
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
 	
 
 		
