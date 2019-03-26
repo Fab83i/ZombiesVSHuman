@@ -1,7 +1,7 @@
 import java.io.RandomAccessFile;
 import java.util.Random;
 
-public class Zombie {
+public class Zombie extends Entite{
 	Position zposition;
 	boolean voirHumain;
 	boolean tourZomb;
@@ -49,7 +49,7 @@ public Position getZposition() {
 	}
 
 	
-public boolean isHumain(Humain heros , Jeu game){ //detecte la présence de l'humain
+public boolean isHumain(Humain heros , Jeu game){ //detecte la presence de l'humain
 	int i,j;
 	boolean result;
 	result = false;
@@ -74,45 +74,45 @@ public void manger(Humain heros, Jeu game){
 	}
 }
 		
-public Position deplacement(Humain heros, Jeu game) {
-	int dx,dy;
-	boolean ybool;
-	ybool=true;
-	Random rd = new Random();
-	if (isHumain(heros, game)==false) {
-		if (zposition.getCoordonneex()==20 && zposition.getCoordonneey()!=20 && zposition.getCoordonneey()!=0) {
-			zposition.setCoordonneex(zposition.getCoordonneex()-1);
-		}
-		if (zposition.getCoordonneex()==0 && zposition.getCoordonneey()!=20 && zposition.getCoordonneey()!=0) {
-			zposition.setCoordonneex(zposition.getCoordonneex()+1);
-		}
-		if (zposition.getCoordonneey()==20 && zposition.getCoordonneex()!=20 && zposition.getCoordonneex()!=0) {
-			zposition.setCoordonneey(zposition.getCoordonneey()-1);
-		}
-		if (zposition.getCoordonneey()==0 && zposition.getCoordonneex()!=20 && zposition.getCoordonneex()!=0) {
-			zposition.setCoordonneey(zposition.getCoordonneey()+1);
-		}
-		if (zposition.getCoordonneex()==20 && (zposition.getCoordonneey()==0 || zposition.getCoordonneey()==20)) {
-			zposition.setCoordonneex(zposition.getCoordonneex()-1);
-		}
-		if (zposition.getCoordonneex()==0 && (zposition.getCoordonneey()==0 || zposition.getCoordonneey()==20)) {
-			zposition.setCoordonneex(zposition.getCoordonneex()+1);
-		}
-		dx =rd.nextInt(2)-1;
-		if (dx==0) {
-			ybool= rd.nextBoolean();
-		}
-		if (dx==1 || dx==-1) {
-				dy=0;	
-			}
-		if (ybool==false) {
-			dy=-1;
-		}
-		if (ybool==true) {
-			dy=1;
-		}
-	}		
-}		
+//public Position deplacement(Humain heros, Jeu game) {
+//	int dx,dy;
+//	boolean ybool;
+//	ybool=true;
+//	Random rd = new Random();
+//	if (isHumain(heros, game)==false) {
+//		if (zposition.getCoordonneex()==20 && zposition.getCoordonneey()!=20 && zposition.getCoordonneey()!=0) {
+//			zposition.setCoordonneex(zposition.getCoordonneex()-1);
+//		}
+//		if (zposition.getCoordonneex()==0 && zposition.getCoordonneey()!=20 && zposition.getCoordonneey()!=0) {
+//			zposition.setCoordonneex(zposition.getCoordonneex()+1);
+//		}
+//		if (zposition.getCoordonneey()==20 && zposition.getCoordonneex()!=20 && zposition.getCoordonneex()!=0) {
+//			zposition.setCoordonneey(zposition.getCoordonneey()-1);
+//		}
+//		if (zposition.getCoordonneey()==0 && zposition.getCoordonneex()!=20 && zposition.getCoordonneex()!=0) {
+//			zposition.setCoordonneey(zposition.getCoordonneey()+1);
+//		}
+//		if (zposition.getCoordonneex()==20 && (zposition.getCoordonneey()==0 || zposition.getCoordonneey()==20)) {
+//			zposition.setCoordonneex(zposition.getCoordonneex()-1);
+//		}
+//		if (zposition.getCoordonneex()==0 && (zposition.getCoordonneey()==0 || zposition.getCoordonneey()==20)) {
+//			zposition.setCoordonneex(zposition.getCoordonneex()+1);
+//		}
+//		dx =rd.nextInt(2)-1;
+//		if (dx==0) {
+//			ybool= rd.nextBoolean();
+//		}
+//		if (dx==1 || dx==-1) {
+//				dy=0;	
+//			}
+//		if (ybool==false) {
+//			dy=-1;
+//		}
+//		if (ybool==true) {
+//			dy=1;
+//		}
+//	}		
+//}		
 		//rd.nextB
 		 //dx= (int)(Math.random()*(max-min))+min;
 		
