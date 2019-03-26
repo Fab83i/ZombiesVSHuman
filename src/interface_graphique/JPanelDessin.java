@@ -91,8 +91,8 @@ public class JPanelDessin extends JPanel {
 		
 // Affichage aléatoire de la case d'arrivée
 		if(arrive!=null) {
-			g.drawImage(arrive, (this.getWidth()* )/20, (this.getHeight()* )/20 , this.getWidth()/20, this.getHeight()/20 , null);
-			}
+			g.drawImage(arrive, (this.getWidth()* 1)/20, (this.getHeight()* 1)/20 , this.getWidth()/20, this.getHeight()/20 , null);
+			} // Rajouter les coordonnées nécessaires
 	}
 	
 }
