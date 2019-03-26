@@ -17,7 +17,9 @@ public class Main {
 		
 		Entite test = new Entite();
 		
-		test.moveRandom();
+		
+		// test.moveRandom();
+		
 		
 
 	}

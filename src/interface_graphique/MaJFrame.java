@@ -2,6 +2,7 @@ package interface_graphique;
 
 import java.awt.BorderLayout;
 
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -22,7 +23,7 @@ import java.awt.event.KeyListener;
 
 
 
-public class MaJFrame extends JFrame implements KeyListener {
+public class MaJFrame extends JFrame  implements KeyListener {
 	private JPanel contentPane;
 
 	/**
@@ -111,7 +112,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		 
 		 if(e.getKeyCode()== KeyEvent.VK_RIGHT) {
-			 moveRight() ;
+			  //moveRight();
 	        	
 	        }
 		 if (e.getKeyCode()== KeyEvent.VK_LEFT) {

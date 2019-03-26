@@ -73,7 +73,8 @@ public void manger(Humain heros, Jeu game){
 		
 	}
 }
-		
+
+
 //public Position deplacement(Humain heros, Jeu game) {
 //	int dx,dy;
 //	boolean ybool;
