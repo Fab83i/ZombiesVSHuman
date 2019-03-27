@@ -3,6 +3,8 @@ package interface_graphique;
 import java.awt.BorderLayout;
 
 
+
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -65,6 +67,11 @@ public class MaJFrame extends JFrame  implements KeyListener {
 		play.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btn_play = new JButton("Jouer");
+		btn_play.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		play.add(btn_play);
 		
 		JPanel stop = new JPanel();
@@ -92,10 +99,20 @@ public class MaJFrame extends JFrame  implements KeyListener {
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
     
-		
+       
 		
 	}
 	
+
+//Créer la méthode du bouton jouer, génère la position initiale des zombies et de la case
+    
+	
+	
+	public void clicJouer() {
+		
+		
+		
+	}
 	
 	
 // Commande clavier
