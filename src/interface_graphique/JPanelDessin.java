@@ -86,7 +86,7 @@ public class JPanelDessin extends JPanel {
 //Affichage d'un humain		
 		
 		if(humain!=null) {
-			g.drawImage(humain, (this.getWidth()*6)/20, (this.getHeight()*18)/20 , this.getWidth()/20, this.getHeight()/20 , null);
+			g.drawImage(humain, (this.getWidth()*9)/20, (this.getHeight()*18)/20 , this.getWidth()/20, this.getHeight()/20 , null);
 			}
 		
 // Affichage aléatoire de la case d'arrivée

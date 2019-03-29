@@ -17,6 +17,8 @@ public class Main {
 		Entite test = new Entite();
 		Case caseArrivee = new Case();
 		
+		Zombie zombie1 = new Zombie();
+		
 		caseArrivee.PositionCaseArrive();
 		 // System.out.println(caseArrivee.getPositionX()); Vérification
 		
