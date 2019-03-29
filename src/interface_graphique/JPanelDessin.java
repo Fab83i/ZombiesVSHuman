@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class JPanelDessin extends JPanel {
@@ -72,6 +74,19 @@ public class JPanelDessin extends JPanel {
 			marge=null;
 		       }
 	}
+	
+	public LinkedList<Integer> coordonneeZombie() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		int x = (int) Math.ceil(Math.random()*20);
+		int y = (int) Math.ceil(Math.random()*20);
+		while (x<= 5 + 4 || x  >= 5 - 4 || y <= 5 + 4 || y >= 5 - 4) {
+			x = (int) Math.ceil(Math.random()*20);
+			y = (int) Math.ceil(Math.random()*20);
+		}
+		list.add(x);
+		list.add(y);
+		return list ;
+	}
 
 
 
@@ -98,14 +113,33 @@ public class JPanelDessin extends JPanel {
 	
 //Affichage d'un zombie
 		
-		if(image!=null) {
-			g.drawImage(image, (this.getWidth()*1)/20, (this.getHeight()*1)/20 , this.getWidth()/20, this.getHeight()/20 , null);
+		if(image!=null && difficulte >=0) {
+			g.drawImage(image, (this.getWidth()*5)/20, (this.getHeight()*19)/20 , this.getWidth()/20, this.getHeight()/20 , null);
 			}
 		
-//Affichage d'un zombie
 		
-		if(image!=null) {
-			g.drawImage(image, (this.getWidth()*10)/20, (this.getHeight()*18)/20 , this.getWidth()/20, this.getHeight()/20 , null);
+		if(image!=null && difficulte >=0) {
+			g.drawImage(image, (this.getWidth()*1)/20, (this.getHeight()*5)/20 , this.getWidth()/20, this.getHeight()/20 , null);
+			}
+		
+		if(image!=null && difficulte >=0) {
+			g.drawImage(image, (this.getWidth()*2)/20, (this.getHeight()*8)/20 , this.getWidth()/20, this.getHeight()/20 , null);
+			}
+		
+		if(image!=null && difficulte >=1) {
+			g.drawImage(image, (this.getWidth()*12)/20, (this.getHeight()*14)/20 , this.getWidth()/20, this.getHeight()/20 , null);
+			}
+		
+		if(image!=null && difficulte >=1) {
+			g.drawImage(image, (this.getWidth()*16)/20, (this.getHeight()*11)/20 , this.getWidth()/20, this.getHeight()/20 , null);
+			}
+		
+		if(image!=null && difficulte >=2) {
+			g.drawImage(image, (this.getWidth()*5)/20, (this.getHeight()*14)/20 , this.getWidth()/20, this.getHeight()/20 , null);
+			}
+		
+		if(image!=null && difficulte >=2) {
+			g.drawImage(image, (this.getWidth()*6)/20, (this.getHeight()*12)/20 , this.getWidth()/20, this.getHeight()/20 , null);
 			}
 
 //Affichage d'un humain		
