@@ -1,22 +1,26 @@
 
 public class Jeu {
-	int nbTours,difficulte;
+	int difficulte;
 	boolean marche;
-	Humain heros1;
-	Humain heros2;
-	Zombie zombie1;
-	Zombie zombie2;
-	Zombie zombie3;
-	Zombie zombie4;
-	Zombie zombie5;
-	Zombie zombie6;
-	Zombie zombie7;
+	Humain heros=new Humain();
+	Zombie zombie1 = new Zombie();
+	Zombie zombie2= new Zombie();
+	Zombie zombie3= new Zombie();
+	Zombie zombie4= new Zombie();
+	Zombie zombie5= new Zombie();
+	Zombie zombie6= new Zombie();
+	Zombie zombie7= new Zombie();
 	int positionX ;
 	int positionY ;
 	
 	
 	
 	
+	
+	
+
+
+
 	public boolean moveLeft() {
 		if (this.positionX >= 1) {
 			this.positionX = this.positionX - 1 ;
@@ -96,12 +100,6 @@ public class Jeu {
 	
 	
 	
-	public int getNbTours() {
-		return nbTours;
-	}
-	public void setNbTours(int nbTours) {
-		this.nbTours = nbTours;
-	}
 	public int getDifficulte() {
 		return difficulte;
 	}
@@ -116,9 +114,12 @@ public class Jeu {
 	}
 	public Jeu( boolean marche) {
 		super();
-		this.nbTours = 0;
 		this.difficulte = 0;
 		this.marche = marche;
+	}
+
+	public Jeu() {
+		super();
 	}
 
 	

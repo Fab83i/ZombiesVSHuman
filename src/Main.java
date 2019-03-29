@@ -7,14 +7,15 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		Jeu game = new Jeu(true);
+		
+		Jeu game = new Jeu();
 		ArrayList<Zombie> list = new ArrayList<>();
 		for (int i=0;i<7;i++) {
 			list.add(new Zombie());
 		
 		}
 		
-		Entite test = new Entite();
+		Deplacement test = new Deplacement();
 		Case caseArrivee = new Case();
 		
 		Zombie zombie1 = new Zombie();

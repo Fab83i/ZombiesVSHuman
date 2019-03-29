@@ -1,16 +1,15 @@
 
-public class Humain extends Entite{
+public class Humain extends Deplacement{
 	
 	//int positionX;
 	//int positionY;
-	Position hPosition;
+	int nbTours;
+	int positionX, positionY;
 	String sexe;
 	boolean tourHumain, estBruyant;
 	
 	
-	public Position gethPosition() {
-		return hPosition;
-	}
+
 	
 //	public void setPositionX( int positionX) {
 //		this.positionX = positionX;
@@ -30,10 +29,32 @@ public class Humain extends Entite{
 //	}
 	
 	
-	public void sethPosition(Position hPosition) {
-		this.hPosition = hPosition;
-	}
 	
+	
+	public int getNbTours() {
+		return nbTours;
+	}
+
+	public int getPositionX() {
+		return positionX;
+	}
+
+	public void setPositionX(int positionX) {
+		this.positionX = positionX;
+	}
+
+	public int getPositionY() {
+		return positionY;
+	}
+
+	public void setPositionY(int positionY) {
+		this.positionY = positionY;
+	}
+
+	public void setNbTours(int nbTours) {
+		this.nbTours = nbTours;
+	}
+
 	public String getSexe() {
 		return sexe;
 	}
@@ -58,20 +79,26 @@ public class Humain extends Entite{
 		this.estBruyant = estBruyant;
 	}
 	
-	public Humain(Position hPosition, String sexe, boolean tourHumain) {
-		super();
-		this.hPosition = hPosition;
-		this.sexe = sexe;
-		this.tourHumain = tourHumain;
-		this.estBruyant = false;
-	}
+	
 	
 	
 	public Humain() {
 		super();
 	}
 	
-	
-	
+	public void HumBruyant() {
+		estBruyant = false;
+		if (getNbTours() != 0) {
+			setNbTours(nbTours-1);
+		}
+		if (nbDeplacHum == 2) {
+			estBruyant = true;
+			setNbTours(nbTours+1);
+		}
+		if (nbDeplacHum == 3) {
+			estBruyant = true;
+			setNbTours(nbTours+3);
+		}
+	}
 
 }

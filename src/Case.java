@@ -1,5 +1,5 @@
 
-public class Case extends Entite {
+public class Case extends Deplacement {
 	int positionX , positionY;
 	int couleur,typeCase;
 	//Position casePosition;
