@@ -27,32 +27,37 @@ import java.awt.event.KeyListener;
 
 public class MaJFrame extends JFrame  implements KeyListener {
 	private JPanel contentPane;
+	private int sexe;
+	private int selectedLevel;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MaJFrame frame = new MaJFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	
+	
+	public int getSexe() {
+		return sexe;
+	}
+	
+
+
+	public int getSelectedLevel() {
+		return selectedLevel;
 	}
 
-// Construction de la JFrame 
-	
-	public MaJFrame() {
+
+
+	public MaJFrame(int selLevelP, int sexeP) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		this.sexe = sexeP;
+		this.selectedLevel = selLevelP;
+		
+		System.out.println("sel " + selectedLevel + " sexe " +sexe );
+		
+		
 		
 		JPanel view = new JPanel();
 		contentPane.add(view, BorderLayout.CENTER);
@@ -66,32 +71,26 @@ public class MaJFrame extends JFrame  implements KeyListener {
 		Menu.add(play);
 		play.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JButton btn_play = new JButton("Jouer");
-		btn_play.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		play.add(btn_play);
-		
 		JPanel stop = new JPanel();
 		Menu.add(stop);
 		
-		JButton btn_stop = new JButton("Pause");
-		btn_stop.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		stop.add(btn_stop);
+		
 		
 		JPanel retour = new JPanel();
 		Menu.add(retour);
 		
-		JButton btnRetour = new JButton("Retour");
+		JButton btnRetour = new JButton("Menu");
+		btnRetour.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuInit retour = new MenuInit();
+				retour.setVisible(true);
+				MaJFrame.this.setVisible(false);
+				
+			}
+		});
 		retour.add(btnRetour);
 		
-		JPanelDessin Dessin = new JPanelDessin();
+		JPanelDessin Dessin = new JPanelDessin(sexe , selectedLevel);
 		view.add(Dessin, BorderLayout.CENTER);
 		
 
@@ -104,15 +103,10 @@ public class MaJFrame extends JFrame  implements KeyListener {
 	}
 	
 
-//Créer la méthode du bouton jouer, génère la position initiale des zombies et de la case
     
 	
 	
-	public void clicJouer() {
-		
-		
-		
-	}
+	
 	
 	
 // Commande clavier

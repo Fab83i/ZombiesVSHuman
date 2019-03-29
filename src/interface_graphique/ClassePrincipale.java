@@ -11,6 +11,8 @@ public class ClassePrincipale {
 		
 		Keyboard sc = new Keyboard();
 		
+		MenuInit menu = new MenuInit();
+		
 	//	Case caseDepart = new Case() ;
 
 	}

@@ -11,22 +11,36 @@ import java.io.IOException;
 public class JPanelDessin extends JPanel {
 
 	private BufferedImage image;
-	private BufferedImage humain;
+	private BufferedImage homer;
 	private BufferedImage arrive ;
+	private BufferedImage marge;
+	private int difficulte;
+	private int sexeP;
+
+	
+	
 
 
 
 	/**
 	 * Create the panel.
+	 * @param selectedLevel 
+	 * @param sexe 
 	 */
 	
 
 	
-	public JPanelDessin() {
+	
+	public JPanelDessin(int sexe, int selectedLevel) {
+		
+		super();
+		
+		this.sexeP = sexe ;
+		this.difficulte = selectedLevel;
 		
 // Importation des images zombies et humains et arrive spoon aléatoire
 		
-		super();
+		
 		try {
 			image = ImageIO.read(new File("images/burns.jpg"));
 		       } 
@@ -36,11 +50,11 @@ public class JPanelDessin extends JPanel {
 		       }
 		
 		try {
-			humain = ImageIO.read(new File("images/homer.jpg"));
+			homer = ImageIO.read(new File("images/homer.jpg"));
 		       } 
 		catch (IOException bu) {
 			System.out.println(bu);
-			humain=null;
+			homer=null;
 		       }
 		try {
 			arrive = ImageIO.read(new File("images/617yFjlJXiL._SY355_.jpg"));
@@ -50,7 +64,18 @@ public class JPanelDessin extends JPanel {
 			arrive=null;
 		       }
 
+		try {
+			marge = ImageIO.read(new File("images/hqdefault.jpg"));
+		       } 
+		catch (IOException ex) {
+			System.out.println(ex);
+			marge=null;
+		       }
 	}
+
+
+
+
 
 
 
@@ -85,9 +110,13 @@ public class JPanelDessin extends JPanel {
 
 //Affichage d'un humain		
 		
-		if(humain!=null) {
-			g.drawImage(humain, (this.getWidth()*9)/20, (this.getHeight()*18)/20 , this.getWidth()/20, this.getHeight()/20 , null);
+		if(homer!=null  && sexeP == 0) {
+			g.drawImage(homer, (this.getWidth()*9)/20, (this.getHeight()*18)/20 , this.getWidth()/20, this.getHeight()/20 , null);
 			}
+		if (marge!=null && sexeP == 1 ) {
+			g.drawImage(marge, (this.getWidth()*9)/20, (this.getHeight()*18)/20 , this.getWidth()/20, this.getHeight()/20 , null);			
+			
+		}
 		
 // Affichage aléatoire de la case d'arrivée
 		if(arrive!=null) {
