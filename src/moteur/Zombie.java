@@ -1,8 +1,6 @@
-import java.io.RandomAccessFile;
-import java.util.Random;
+package moteur;
 
 public class Zombie extends Deplacement{
-	int positionX, positionY;
 	boolean voirHumain;
 	boolean tourZomb;
 	
@@ -10,18 +8,10 @@ public class Zombie extends Deplacement{
 
 
 public Zombie(int positionX, int positionY, boolean voirHumain, boolean tourZomb) {
-		super();
-		this.positionX = positionX;
-		this.positionY = positionY;
+		super(positionX, positionY);
 		this.voirHumain = voirHumain;
 		this.tourZomb = tourZomb;
 	}
-
-
-
-public Zombie() {
-	super();
-}
 
 
 

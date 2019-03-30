@@ -1,10 +1,8 @@
+package moteur;
 
 public class Humain extends Deplacement{
 	
-	//int positionX;
-	//int positionY;
 	int nbTours;
-	int positionX, positionY;
 	String sexe;
 	boolean tourHumain, estBruyant;
 	
@@ -82,8 +80,8 @@ public class Humain extends Deplacement{
 	
 	
 	
-	public Humain() {
-		super();
+	public Humain(int positionX, int positionY) {
+		super(positionX, positionY);
 	}
 	
 	public void HumBruyant() {

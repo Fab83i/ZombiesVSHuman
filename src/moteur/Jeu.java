@@ -1,15 +1,16 @@
+package moteur;
 
 public class Jeu {
 	int difficulte;
 	boolean marche;
-	Humain heros=new Humain();
-	Zombie zombie1 = new Zombie();
+	Humain heros=new Humain(5, 5);
+/*	Zombie zombie1 = new Zombie();
 	Zombie zombie2= new Zombie();
 	Zombie zombie3= new Zombie();
 	Zombie zombie4= new Zombie();
 	Zombie zombie5= new Zombie();
 	Zombie zombie6= new Zombie();
-	Zombie zombie7= new Zombie();
+	Zombie zombie7= new Zombie();*/
 	int positionX ;
 	int positionY ;
 	

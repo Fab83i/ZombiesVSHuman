@@ -1,3 +1,4 @@
+package moteur;
 
 public class Case extends Deplacement {
 	int positionX , positionY;
