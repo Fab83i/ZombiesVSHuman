@@ -103,7 +103,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 					Iterator<Zombie> itr = zombies.iterator();
 					while (itr.hasNext()) {
 						Zombie z = itr.next();
-						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY()) {
+						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY() || randomX == caseArrivee.getPositionX() && randomY == caseArrivee.getPositionY()) {
 							dejaPris = true;
 						}
 					}
@@ -123,7 +123,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 					Iterator<Zombie> itr = zombies.iterator();
 					while (itr.hasNext()) {
 						Zombie z = itr.next();
-						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY()) {
+						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY() || randomX == caseArrivee.getPositionX() && randomY == caseArrivee.getPositionY()) {
 							dejaPris = true;
 						}
 					}
@@ -143,7 +143,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 					Iterator<Zombie> itr = zombies.iterator();
 					while (itr.hasNext()) {
 						Zombie z = itr.next();
-						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY()) {
+						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY() || randomX == caseArrivee.getPositionX() && randomY == caseArrivee.getPositionY()) {
 							dejaPris = true;
 						}
 					}
@@ -155,7 +155,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 			}
 		}
 		if (this.selectedLevel == 3) {
-			for (int i = 0; i < 200; i++) {
+			for (int i = 0; i < 20; i++) {
 				boolean dejaPris = true;
 				while (dejaPris == true) {
 					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
@@ -164,7 +164,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 					Iterator<Zombie> itr = zombies.iterator();
 					while (itr.hasNext()) {
 						Zombie z = itr.next();
-						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY()) {
+						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY() || randomX == caseArrivee.getPositionX() && randomY == caseArrivee.getPositionY()) {
 							dejaPris = true;
 						}
 					}

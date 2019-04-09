@@ -7,8 +7,9 @@ public class ClassePrincipale {
 		
 		
 		MenuInit menu = new MenuInit();
+		menu.setVisible(true);
 		MaJFrame mJF = new MaJFrame(0, 0);
-		mJF.setVisible(true);
+		//mJF.setVisible(true);
 		JPanelImage zombie = new JPanelImage();
 		
 		Keyboard sc = new Keyboard();
