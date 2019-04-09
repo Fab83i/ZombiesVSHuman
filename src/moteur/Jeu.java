@@ -253,7 +253,7 @@ public class Jeu {
 
 
 
-
+	public void entree() {
 
 
 

@@ -88,7 +88,7 @@ public class Deplacement {
 			moveDown();
 	}
 
-	public void coumptDepHum(Humain heros) { // compte le nb de d�placement de l'humain par tour en modifiant la variable
+	/*public void coumptDepHum(Humain heros) { // compte le nb de d�placement de l'humain par tour en modifiant la variable
 										// nbDeplacHum
 		int k;
 		k = 0;
@@ -109,7 +109,7 @@ public class Deplacement {
 		setNbDeplacHum(k);
 		heros.setTourHumain(false);
 	}
-
+*/
 	public void moveZomb(Zombie zombie1, Humain heros) {
 		Random rd = new Random();
 		boolean k, m;
