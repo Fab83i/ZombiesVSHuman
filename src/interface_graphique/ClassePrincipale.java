@@ -5,7 +5,7 @@ public class ClassePrincipale {
 
 	public static void main(String[] args) {
 		
-		MaJFrame mJF = new MaJFrame();
+		MaJFrame mJF = new MaJFrame(0, 0);
 		mJF.setVisible(true);
 		JPanelImage zombie = new JPanelImage();
 		
