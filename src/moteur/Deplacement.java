@@ -88,17 +88,19 @@ public class Deplacement {
 										// nbDeplacHum
 		int k;
 		k = 0;
-		if (heros.moveRight() == true) {
+		if(k<3) {
+			if (heros.moveRight() == true) {
 			k = k + 1;
-		}
-		if (heros.moveDown() == true) {
+			}
+			if (heros.moveDown() == true) {
 			k = k + 1;
-		}
-		if (heros.moveLeft() == true) {
+			}
+			if (heros.moveLeft() == true) {
 			k = k + 1;
-		}
-		if (heros.moveUp() == true) {
+			}
+			if (heros.moveUp() == true) {
 			k = k + 1;
+			}
 		}
 		setNbDeplacHum(k);
 		heros.setTourHumain(false);
