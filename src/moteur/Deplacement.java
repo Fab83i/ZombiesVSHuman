@@ -29,12 +29,12 @@ public class Deplacement {
 		return this.positionY;
 	}
 	
-	public int getDistanceBetween(Deplacement e1, Deplacement e2) {
-		int a = (e2.getPositionX() - e1.getPositionX()) * (e2.getPositionX() - e1.getPositionX());
-		int b = (e2.getPositionY() - e1.getPositionY()) * (e2.getPositionY() - e1.getPositionY());
-		int aplusb = a + b;
-		return (int) Math.ceil(Math.sqrt(aplusb));
-	}
+//	public int getDistanceBetween(Deplacement e1, Deplacement e2) {
+//		int a = (e2.getPositionX() - e1.getPositionX()) * (e2.getPositionX() - e1.getPositionX());
+//		int b = (e2.getPositionY() - e1.getPositionY()) * (e2.getPositionY() - e1.getPositionY());
+//		int aplusb = a + b;
+//		return (int) Math.ceil(Math.sqrt(aplusb));
+//	}
 
 	public boolean moveLeft() {
 		if (this.positionX >= 1) {
@@ -84,7 +84,7 @@ public class Deplacement {
 			moveDown();
 	}
 
-	public void moveHum(Humain heros) { // compte le nb de d�placement de l'humain par tour en modifiant la variable
+	public void coumptDepHum(Humain heros) { // compte le nb de d�placement de l'humain par tour en modifiant la variable
 										// nbDeplacHum
 		int k;
 		k = 0;
@@ -101,6 +101,7 @@ public class Deplacement {
 			k = k + 1;
 		}
 		setNbDeplacHum(k);
+		heros.setTourHumain(false);
 	}
 
 	public void moveZomb(Zombie zombie1, Humain heros) {
@@ -113,11 +114,11 @@ public class Deplacement {
 		} else {
 			if (zombie1.getPositionX() == heros.getPositionX()) {
 				if (zombie1.getPositionY() > heros.getPositionY()) {
-					zombie1.moveDown();
-					zombie1.moveDown();
+					zombie1.moveUp();
+					zombie1.moveUp();
 				} else {
-					zombie1.moveUp();
-					zombie1.moveUp();
+					zombie1.moveDown();
+					zombie1.moveDown();
 				}
 			}
 			if (zombie1.getPositionY() == heros.getPositionY()) {
@@ -161,6 +162,18 @@ public class Deplacement {
 					}
 				}
 			}
+			heros.setTourHumain(true);
 		}
 	}
+	
+	
+	
+	
+	
+	
 }
+
+
+
+
+

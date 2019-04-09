@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+
+import interface_graphique.MaJFrame;
+
 package moteur;
 
 public class Jeu {
@@ -107,7 +111,7 @@ public class Jeu {
 	public void setDifficulte(int difficulte) {
 		this.difficulte = difficulte;
 	}
-	public boolean isMarche() {
+	public boolean getMarche() {
 		return marche;
 	}
 	public void setMarche(boolean marche) {
@@ -124,5 +128,39 @@ public class Jeu {
 	}
 
 	
+
+
+
+	public void faireUnTour (ArrayList<Zombie> zombies,Jeu game) {
+		int i;
+		if (game.getMarche()==true) {
+			System.out.println("A vous de jouer");
+			if (heros.getTourHumain()==true) {
+				heros.coumptDepHum(heros);
+				heros.humBruyant();
+			}
+			if (heros.getPositionX()==caseArrivee.getPositionX() && heros.getPositionY()==caseArrivee.getPositionY()) {
+				game.setMarche(false);
+			}
+			if (heros.getTourHumain()==false) {
+				for (i=0;i<zombies.size();i++){
+					zombies.get(i).moveZomb(zombies.get(i), heros);
+					if (heros.getPositionX()==zombies.get(i).getPositionX() && heros.getPositionY()==zombies.get(i).getPositionY()) {
+						game.setMarche(false);
+					}
+				}
+			}
+		}
+	}
+	
+
+
+
+
+
+
+
+
+
 
 }

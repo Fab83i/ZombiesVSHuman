@@ -61,7 +61,7 @@ public class Humain extends Deplacement{
 		this.sexe = sexe;
 	}
 	
-	public boolean isTourHumain() {
+	public boolean getTourHumain() {
 		return tourHumain;
 	}
 	
@@ -84,7 +84,7 @@ public class Humain extends Deplacement{
 		super(positionX, positionY);
 	}
 	
-	public void HumBruyant() {
+	public void humBruyant() { // Modifie le nombre de tour ou l'humain est bruyant
 		estBruyant = false;
 		if (getNbTours() != 0) {
 			setNbTours(nbTours-1);

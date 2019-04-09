@@ -1,7 +1,7 @@
 package moteur;
 
 public class Zombie extends Deplacement{
-	boolean voirHumain;
+	//boolean voirHumain;
 	boolean tourZomb;
 	
 
@@ -9,20 +9,18 @@ public class Zombie extends Deplacement{
 
 public Zombie(int positionX, int positionY, boolean voirHumain, boolean tourZomb) {
 		super(positionX, positionY);
-		this.voirHumain = voirHumain;
 		this.tourZomb = tourZomb;
 	}
 
 
 
-	public boolean isVoirHumain() {
-		return voirHumain;
-	}
+	public Zombie(int positionX, int positionY) {
+	super(positionX, positionY);
+}
 
 
-	public void setVoirHumain(boolean voirHumain) {
-		this.voirHumain = voirHumain;
-	}
+
+
 
 
 	public boolean isTourZomb() {
@@ -72,12 +70,12 @@ public void setPositionY(int positionY) {
 	this.positionY = positionY;
 }
 
-public void manger(Humain heros, Jeu game){
-	if (heros.getPositionX()==getPositionX() && heros.getPositionY()==getPositionY()) {
-		game.setMarche(false);
-		
-	}
-}
+//public void manger(Humain heros, Jeu game){
+//	if (heros.getPositionX()==getPositionX() && heros.getPositionY()==getPositionY()) {
+//		game.setMarche(false);
+//		
+//	}
+//}
 
 
 
