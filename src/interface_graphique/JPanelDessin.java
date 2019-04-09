@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import moteur.Case;
 import moteur.Humain;
 import moteur.Zombie;
 
@@ -21,10 +22,13 @@ public class JPanelDessin extends JPanel {
 	private BufferedImage homer;
 	private BufferedImage arrive;
 	private BufferedImage marge;
+	private BufferedImage victoire;
+	private BufferedImage defaite;
 	private int difficulte;
 	private int sexeP;
 	private ArrayList<Zombie> zombies;
 	private Humain humain;
+	private Case caseArrivee;
 
 	/**
 	 * Create the panel.
@@ -34,7 +38,8 @@ public class JPanelDessin extends JPanel {
 	 * @param zombies
 	 */
 
-	public JPanelDessin(int sexe, int selectedLevel, ArrayList<Zombie> zombies, Humain humain) {
+	public JPanelDessin(int sexe, int selectedLevel, ArrayList<Zombie> zombies, Humain humain,
+			Case caseArriveeP) {
 
 		super();
 
@@ -42,6 +47,7 @@ public class JPanelDessin extends JPanel {
 		this.difficulte = selectedLevel;
 		this.zombies = zombies;
 		this.humain = humain;
+		this.caseArrivee = caseArriveeP;
 
 // Importation des images zombies et humains et arrive spoon aléatoire
 
@@ -50,6 +56,13 @@ public class JPanelDessin extends JPanel {
 		} catch (IOException ex) {
 			System.out.println(ex);
 			image = null;
+		}
+		
+		try {
+			defaite = ImageIO.read(new File("images/homertriste.jpg"));
+		} catch (IOException ex) {
+			System.out.println(ex);
+			defaite = null;
 		}
 
 		try {
@@ -70,6 +83,13 @@ public class JPanelDessin extends JPanel {
 		} catch (IOException ex) {
 			System.out.println(ex);
 			marge = null;
+		}
+		
+		try {
+			victoire = ImageIO.read(new File("images/Homer-Simpson.jpg"));
+		} catch (IOException ex) {
+			System.out.println(ex);
+			victoire = null;
 		}
 	}
 
@@ -124,11 +144,45 @@ public class JPanelDessin extends JPanel {
 
 		}
 
-// Affichage aléatoire de la case d'arrivée
+/// Affichage aléatoire de la case d'arrivée
+		
 		if (arrive != null) {
-			g.drawImage(arrive, (this.getWidth() * 1) / 20, (this.getHeight() * 1) / 20, this.getWidth() / 20,
+			System.out.println("arrive "  + caseArrivee.getPositionX() + caseArrivee.getPositionY());
+			g.drawImage(arrive, (this.getWidth() * this.caseArrivee.getPositionX()) / 20, (this.getHeight() * this.caseArrivee.getPositionY()) / 20, this.getWidth() / 20,
 					this.getHeight() / 20, null);
-		} // Rajouter les coordonnées nécessaires
+			
+		} 
+		
+// Fin du jeu si l'humain arrive sur la case finale
+		
+		if ( this.caseArrivee.getPositionX() == this.humain.getPositionX() && this.caseArrivee.getPositionY() == this.humain.getPositionY() ) {
+			if (victoire != null) {
+				g.drawImage(victoire, 0 , 0 ,this.getWidth(), this.getHeight(), null);	
+			}
+			
+		}
+		
+// Fin du jeu si l'humain rencontre un zombie	
+		
+		int a;
+		for ( a= 0 ; a < zombies.size(); a++) {
+			if (this.zombies.get(a).getPositionX() == this.humain.getPositionX() && this.zombies.get(a).getPositionY() == this.humain.getPositionY()) {
+				if (defaite != null) {
+					g.drawImage(defaite, 0 , 0 ,this.getWidth(), this.getHeight(), null);	
+				}
+			}
+			
+		}
 	}
 
+
 }
+
+		
+
+		
+		
+	
+	
+
+

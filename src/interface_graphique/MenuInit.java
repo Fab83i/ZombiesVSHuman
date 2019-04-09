@@ -99,9 +99,9 @@ public class MenuInit extends JFrame {
 	 list = new JList();
 		difficulte.add(list);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.setSelectedIndices(new int[] {3});
+		list.setSelectedIndices(new int[] {4});
 		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Facile", "Moyen", "Difficile"};
+			String[] values = new String[] {"Facile", "Moyen", "Difficile", "Hardcore"};
 			public int getSize() {
 				return values.length;
 			}

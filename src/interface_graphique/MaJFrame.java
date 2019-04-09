@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 import moteur.Humain;
 import moteur.Zombie;
+import moteur.Case;
 
 public class MaJFrame extends JFrame implements KeyListener {
 	private JPanel contentPane;
@@ -25,6 +26,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 	private ArrayList<Zombie> zombies;
 	private Humain humain;
 	private JPanelDessin dessin;
+	public Case caseArrivee;
 
 	public int getSexe() {
 		return sexe;
@@ -76,14 +78,20 @@ public class MaJFrame extends JFrame implements KeyListener {
 		});
 		retour.add(btnRetour);
 
-		// Début du jeu
+		// création case arrivee
 		
+		int ran = (int) Math.ceil(Math.random() * 20) - 1;
+		this.caseArrivee = new Case(ran , 0);
+		
+		System.out.println(caseArrivee.getPositionX() + " " + caseArrivee.getPositionY());
 
 		// Création de l'humain
+		
 		int random = (int) Math.ceil(Math.random() * 20) - 1;
 		this.humain = new Humain(random, 19);
 
 		// Création des zombies
+		
 		zombies = new ArrayList<Zombie>();
 		if (this.selectedLevel == 0) {
 			for (int i = 0; i < 3; i++) {
@@ -95,7 +103,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 					Iterator<Zombie> itr = zombies.iterator();
 					while (itr.hasNext()) {
 						Zombie z = itr.next();
-						if (randomX == z.getPositionX() && randomY == z.getPositionY()) {
+						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY()) {
 							dejaPris = true;
 						}
 					}
@@ -115,7 +123,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 					Iterator<Zombie> itr = zombies.iterator();
 					while (itr.hasNext()) {
 						Zombie z = itr.next();
-						if (randomX == z.getPositionX() && randomY == z.getPositionY()) {
+						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY()) {
 							dejaPris = true;
 						}
 					}
@@ -135,7 +143,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 					Iterator<Zombie> itr = zombies.iterator();
 					while (itr.hasNext()) {
 						Zombie z = itr.next();
-						if (randomX == z.getPositionX() && randomY == z.getPositionY()) {
+						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY()) {
 							dejaPris = true;
 						}
 					}
@@ -146,14 +154,40 @@ public class MaJFrame extends JFrame implements KeyListener {
 				}
 			}
 		}
+		if (this.selectedLevel == 3) {
+			for (int i = 0; i < 200; i++) {
+				boolean dejaPris = true;
+				while (dejaPris == true) {
+					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
+					int randomY = (int) Math.ceil(Math.random() * 18) - 1;
+					dejaPris = false;
+					Iterator<Zombie> itr = zombies.iterator();
+					while (itr.hasNext()) {
+						Zombie z = itr.next();
+						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY()) {
+							dejaPris = true;
+						}
+					}
+					if (dejaPris == false)
+						zombies.add(new Zombie(randomX, randomY, false, false));
+				}
+			}
+		}
 
-		dessin = new JPanelDessin(sexe, selectedLevel, zombies, humain);
+
+		dessin = new JPanelDessin(sexe, selectedLevel, zombies, humain, caseArrivee);
 		view.add(dessin, BorderLayout.CENTER);
 
 		addKeyListener(this);
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
 
+
+	
+	 
+	
+	
+		
 	}
 
 // Commande clavier

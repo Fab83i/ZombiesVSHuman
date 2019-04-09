@@ -1,15 +1,19 @@
 package moteur;
 
 public class Case extends Deplacement {
-	int positionX , positionY;
 	int couleur,typeCase;
-	//Position casePosition;
 	boolean libre;
 	
 	
 	
 	
 	
+	public Case(int positionX, int positionY) {
+		super(positionX, positionY);
+	}
+
+
+
 	public int getPositionX() {
 		return positionX;
 	}
@@ -34,10 +38,10 @@ public class Case extends Deplacement {
 
 	// Positionne la case finale
 
-	public void PositionCaseArrive() {
-		this.positionX = (int) Math.ceil(Math.random()*20);
-		this.positionY = (int) Math.ceil(Math.random()*20);
-	}
+//	public void PositionCaseArrive() {
+//		this.positionX = (int) Math.ceil(Math.random()*20);
+//		this.positionY = (int) Math.ceil(Math.random()*20);
+//	}
 	
 	
 	
