@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import moteur.Case;
 import moteur.Humain;
+import moteur.Jeu;
 import moteur.Zombie;
 
 public class JPanelDessin extends JPanel {
@@ -38,16 +39,15 @@ public class JPanelDessin extends JPanel {
 	 * @param zombies
 	 */
 
-	public JPanelDessin(int sexe, int selectedLevel, ArrayList<Zombie> zombies, Humain humain,
-			Case caseArriveeP) {
+	public JPanelDessin(int sexe, Jeu jeu) {
 
 		super();
 
 		this.sexeP = sexe;
-		this.difficulte = selectedLevel;
-		this.zombies = zombies;
-		this.humain = humain;
-		this.caseArrivee = caseArriveeP;
+		this.difficulte = jeu.getDifficulte();
+		this.zombies = jeu.getZombies();
+		this.humain = jeu.getHeros();
+		this.caseArrivee = jeu.getCaseArrivee();
 
 // Importation des images zombies et humains et arrive spoon aléatoire
 

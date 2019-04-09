@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import moteur.Humain;
+import moteur.Jeu;
 import moteur.Zombie;
 import moteur.Case;
 
@@ -23,10 +24,8 @@ public class MaJFrame extends JFrame implements KeyListener {
 	private JPanel contentPane;
 	private int sexe;
 	private int selectedLevel;
-	private ArrayList<Zombie> zombies;
-	private Humain humain;
 	private JPanelDessin dessin;
-	public Case caseArrivee;
+	private Jeu jeu;
 
 	public int getSexe() {
 		return sexe;
@@ -78,104 +77,13 @@ public class MaJFrame extends JFrame implements KeyListener {
 		});
 		retour.add(btnRetour);
 
-		// création case arrivee
 		
-		int ran = (int) Math.ceil(Math.random() * 20) - 1;
-		this.caseArrivee = new Case(ran , 0);
+	
+		jeu = new Jeu(this,selectedLevel);
 		
-		System.out.println(caseArrivee.getPositionX() + " " + caseArrivee.getPositionY());
-
-		// Création de l'humain
-		
-		int random = (int) Math.ceil(Math.random() * 20) - 1;
-		this.humain = new Humain(random, 19);
-
-		// Création des zombies
-		
-		zombies = new ArrayList<Zombie>();
-		if (this.selectedLevel == 0) {
-			for (int i = 0; i < 3; i++) {
-				boolean dejaPris = true;
-				while (dejaPris == true) {
-					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
-					int randomY = (int) Math.ceil(Math.random() * 20) - 1;
-					dejaPris = false;
-					Iterator<Zombie> itr = zombies.iterator();
-					while (itr.hasNext()) {
-						Zombie z = itr.next();
-						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY() || randomX == caseArrivee.getPositionX() && randomY == caseArrivee.getPositionY()) {
-							dejaPris = true;
-						}
-					}
-					if (dejaPris == false)
-						zombies.add(new Zombie(randomX, randomY, false, false));
-				}
-			}
-		}
-
-		if (this.selectedLevel == 1) {
-			for (int i = 0; i < 5; i++) {
-				boolean dejaPris = true;
-				while (dejaPris == true) {
-					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
-					int randomY = (int) Math.ceil(Math.random() * 20) - 1;
-					dejaPris = false;
-					Iterator<Zombie> itr = zombies.iterator();
-					while (itr.hasNext()) {
-						Zombie z = itr.next();
-						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY() || randomX == caseArrivee.getPositionX() && randomY == caseArrivee.getPositionY()) {
-							dejaPris = true;
-						}
-					}
-					if (dejaPris == false)
-						zombies.add(new Zombie(randomX, randomY, false, false));
-				}
-			}
-		}
-
-		if (this.selectedLevel == 2) {
-			for (int i = 0; i < 7; i++) {
-				boolean dejaPris = true;
-				while (dejaPris == true) {
-					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
-					int randomY = (int) Math.ceil(Math.random() * 20) - 1;
-					dejaPris = false;
-					Iterator<Zombie> itr = zombies.iterator();
-					while (itr.hasNext()) {
-						Zombie z = itr.next();
-						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY() || randomX == caseArrivee.getPositionX() && randomY == caseArrivee.getPositionY()) {
-							dejaPris = true;
-						}
-					}
-					if (dejaPris == false) {
-						zombies.add(new Zombie(randomX, randomY, false, false));
-						System.out.println("Zombie généré en : " + randomX + "," + randomY);
-					}
-				}
-			}
-		}
-		if (this.selectedLevel == 3) {
-			for (int i = 0; i < 20; i++) {
-				boolean dejaPris = true;
-				while (dejaPris == true) {
-					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
-					int randomY = (int) Math.ceil(Math.random() * 18) - 1;
-					dejaPris = false;
-					Iterator<Zombie> itr = zombies.iterator();
-					while (itr.hasNext()) {
-						Zombie z = itr.next();
-						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == humain.getPositionX() && randomY == humain.getPositionY() || randomX == caseArrivee.getPositionX() && randomY == caseArrivee.getPositionY()) {
-							dejaPris = true;
-						}
-					}
-					if (dejaPris == false)
-						zombies.add(new Zombie(randomX, randomY, false, false));
-				}
-			}
-		}
 
 
-		dessin = new JPanelDessin(sexe, selectedLevel, zombies, humain, caseArrivee);
+		dessin = new JPanelDessin(sexe, jeu);
 		view.add(dessin, BorderLayout.CENTER);
 
 		addKeyListener(this);
@@ -201,48 +109,16 @@ public class MaJFrame extends JFrame implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			humain.moveRight();
-			dessin.repaint();
-			Iterator<Zombie> itr = zombies.iterator();
-			while (itr.hasNext()) {
-				Zombie z = itr.next();
-				z.moveZomb(z, humain);
-			}
-			dessin.repaint();
-			System.out.println("L'humain se trouve en " + humain.getPositionX() + "," + humain.getPositionY());
+			jeu.moveRight();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			humain.moveLeft();
-			dessin.repaint();
-			Iterator<Zombie> itr = zombies.iterator();
-			while (itr.hasNext()) {
-				Zombie z = itr.next();
-				z.moveZomb(z, humain);
-			}
-			dessin.repaint();
-			System.out.println("L'humain se trouve en " + humain.getPositionX() + "," + humain.getPositionY());
+			jeu.moveLeft();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			humain.moveDown();
-			dessin.repaint();
-			Iterator<Zombie> itr = zombies.iterator();
-			while (itr.hasNext()) {
-				Zombie z = itr.next();
-				z.moveZomb(z, humain);
-			}
-			dessin.repaint();
-			System.out.println("L'humain se trouve en " + humain.getPositionX() + "," + humain.getPositionY());
+			jeu.moveDown();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			humain.moveUp();
-			dessin.repaint();
-			Iterator<Zombie> itr = zombies.iterator();
-			while (itr.hasNext()) {
-				Zombie z = itr.next();
-				z.moveZomb(z, humain);
-			}
-			dessin.repaint();
-			System.out.println("L'humain se trouve en " + humain.getPositionX() + "," + humain.getPositionY());
+			jeu.moveUp();
 		}
 
 	}

@@ -1,24 +1,117 @@
+package moteur;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import interface_graphique.MaJFrame;
 
-package moteur;
 
 public class Jeu {
-	int difficulte;
-	boolean marche;
-	Humain heros=new Humain(5, 5);
-/*	Zombie zombie1 = new Zombie();
-	Zombie zombie2= new Zombie();
-	Zombie zombie3= new Zombie();
-	Zombie zombie4= new Zombie();
-	Zombie zombie5= new Zombie();
-	Zombie zombie6= new Zombie();
-	Zombie zombie7= new Zombie();*/
-	int positionX ;
-	int positionY ;
+	private int difficulte;
+	private boolean marche;
+	private ArrayList<Zombie> zombies;
+	private Humain heros;
+	private Case caseArrivee;
+	private MaJFrame mjf;
 	
-	
+	public Jeu(MaJFrame mjf, int selectedLevel) {
+		this.difficulte = 0;
+		this.marche = true;
+		int ran = (int) Math.ceil(Math.random() * 20) - 1;
+		caseArrivee = new Case(ran , 0);
+		this.mjf=mjf;
+		
+		System.out.println(caseArrivee.getPositionX() + " " + caseArrivee.getPositionY());
+
+		// Création de l'humain
+		
+		int random = (int) Math.ceil(Math.random() * 20) - 1;
+		heros = new Humain(random, 19);
+		
+		
+		difficulte = selectedLevel;
+		zombies = new ArrayList<Zombie>();
+		if (selectedLevel == 0) {
+			for (int i = 0; i < 3; i++) {
+				boolean dejaPris = true;
+				while (dejaPris == true) {
+					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
+					int randomY = (int) Math.ceil(Math.random() * 20) - 1;
+					dejaPris = false;
+					Iterator<Zombie> itr = zombies.iterator();
+					while (itr.hasNext()) {
+						Zombie z = itr.next();
+						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == heros.getPositionX() && randomY == heros.getPositionY() || randomX == caseArrivee.getPositionX() && randomY == caseArrivee.getPositionY()) {
+							dejaPris = true;
+						}
+					}
+					if (dejaPris == false)
+						zombies.add(new Zombie(randomX, randomY, false, false));
+				}
+			}
+		}
+		
+		if (selectedLevel == 1) {
+			for (int i = 0; i < 5; i++) {
+				boolean dejaPris = true;
+				while (dejaPris == true) {
+					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
+					int randomY = (int) Math.ceil(Math.random() * 20) - 1;
+					dejaPris = false;
+					Iterator<Zombie> itr = zombies.iterator();
+					while (itr.hasNext()) {
+						Zombie z = itr.next();
+						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == heros.getPositionX() && randomY == heros.getPositionY() || randomX == caseArrivee.getPositionX() && randomY == caseArrivee.getPositionY()) {
+							dejaPris = true;
+						}
+					}
+					if (dejaPris == false)
+						zombies.add(new Zombie(randomX, randomY, false, false));
+				}
+			}
+		}
+
+		if (selectedLevel == 2) {
+			for (int i = 0; i < 7; i++) {
+				boolean dejaPris = true;
+				while (dejaPris == true) {
+					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
+					int randomY = (int) Math.ceil(Math.random() * 20) - 1;
+					dejaPris = false;
+					Iterator<Zombie> itr = zombies.iterator();
+					while (itr.hasNext()) {
+						Zombie z = itr.next();
+						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == heros.getPositionX() && randomY == heros.getPositionY() || randomX == caseArrivee.getPositionX() && randomY == caseArrivee.getPositionY()) {
+							dejaPris = true;
+						}
+					}
+					if (dejaPris == false) {
+						zombies.add(new Zombie(randomX, randomY, false, false));
+						System.out.println("Zombie généré en : " + randomX + "," + randomY);
+					}
+				}
+			}
+		}
+		if (selectedLevel == 3) {
+			for (int i = 0; i < 20; i++) {
+				boolean dejaPris = true;
+				while (dejaPris == true) {
+					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
+					int randomY = (int) Math.ceil(Math.random() * 18) - 1;
+					dejaPris = false;
+					Iterator<Zombie> itr = zombies.iterator();
+					while (itr.hasNext()) {
+						Zombie z = itr.next();
+						if (randomX == z.getPositionX() && randomY == z.getPositionY() || randomX == heros.getPositionX() && randomY == heros.getPositionY() || randomX == caseArrivee.getPositionX() && randomY == caseArrivee.getPositionY()) {
+							dejaPris = true;
+						}
+					}
+					if (dejaPris == false)
+						zombies.add(new Zombie(randomX, randomY, false, false));
+				}
+			}
+		}
+
+	}
 	
 	
 	
@@ -26,57 +119,7 @@ public class Jeu {
 
 
 
-	public boolean moveLeft() {
-		if (this.positionX >= 1) {
-			this.positionX = this.positionX - 1 ;
-			return true ;
-		}
-		else {
-			
-			return false ;
-		}
-		
-		
-	}
 	
-	public boolean moveRight() {
-		if (this.positionX <= 20) {
-			this.positionX = this.positionX + 1 ;
-			return true ;
-		}
-		else {
-			
-			return false ;
-		}
-		
-		
-	}
-	
-	public boolean moveUp() {
-		if (this.positionY >= 1) {
-			this.positionY = this.positionY - 1 ;
-			return true ;
-		}
-		else {
-			
-			return false ;
-		}
-		
-		
-	}
-	
-	public boolean moveDown() {
-		if (this.positionY <= 20) {
-			this.positionY = this.positionY + 1 ;
-			return true ;
-		}
-		else {
-			
-			return false ;
-		}
-		
-		
-	}
 	
 	public void moveRandom() {
 		
@@ -117,36 +160,90 @@ public class Jeu {
 	public void setMarche(boolean marche) {
 		this.marche = marche;
 	}
-	public Jeu( boolean marche) {
-		super();
-		this.difficulte = 0;
-		this.marche = marche;
+
+	public ArrayList<Zombie> getZombies() {
+		return zombies;
 	}
 
-	public Jeu() {
-		super();
+	public Humain getHeros() {
+		return heros;
 	}
 
+	public Case getCaseArrivee() {
+		return caseArrivee;
+	}
+
+
+
+
+	public void moveLeft() {
+		heros.moveLeft();
+		/*
+		Iterator<Zombie> itr = zombies.iterator();
+		while (itr.hasNext()) {
+			Zombie z = itr.next();
+			z.moveZomb(z, heros);
+		}
+		*/
+		mjf.repaint();
+		System.out.println("L'humain se trouve en " + heros.getPositionX() + "," + heros.getPositionY());
+	}
 	
-
-
-
-	public void faireUnTour (ArrayList<Zombie> zombies,Jeu game, Case caseArrivee) {
+	public void moveRight() {
+		heros.moveRight();
+		/*
+		Iterator<Zombie> itr = zombies.iterator();
+		while (itr.hasNext()) {
+			Zombie z = itr.next();
+			z.moveZomb(z, heros);
+		}
+		*/
+		mjf.repaint();
+		System.out.println("L'humain se trouve en " + heros.getPositionX() + "," + heros.getPositionY());
+	}
+	
+	public void moveUp() {
+		heros.moveUp();
+		/*
+		Iterator<Zombie> itr = zombies.iterator();
+		while (itr.hasNext()) {
+			Zombie z = itr.next();
+			z.moveZomb(z, heros);
+		}
+		*/
+		mjf.repaint();
+		System.out.println("L'humain se trouve en " + heros.getPositionX() + "," + heros.getPositionY());
+	}
+	
+	public void moveDown() {
+		heros.moveDown();
+		/*
+		Iterator<Zombie> itr = zombies.iterator();
+		while (itr.hasNext()) {
+			Zombie z = itr.next();
+			z.moveZomb(z, heros);
+		}
+		*/
+		mjf.repaint();
+		System.out.println("L'humain se trouve en " + heros.getPositionX() + "," + heros.getPositionY());
+	}
+	
+	public void faireUnTour () {
 		int i;
-		if (game.getMarche()==true) {
+		if (marche==true) {
 			System.out.println("A vous de jouer");
 			if (heros.getTourHumain()==true) {
 				heros.coumptDepHum(heros);
 				heros.humBruyant();
 			}
 			if (heros.getPositionX()==caseArrivee.getPositionX() && heros.getPositionY()==caseArrivee.getPositionY()) {
-				game.setMarche(false);
+				marche=false;
 			}
 			if (heros.getTourHumain()==false) {
 				for (i=0;i<zombies.size();i++){
 					zombies.get(i).moveZomb(zombies.get(i), heros);
 					if (heros.getPositionX()==zombies.get(i).getPositionX() && heros.getPositionY()==zombies.get(i).getPositionY()) {
-						game.setMarche(false);
+						marche=false;
 					}
 				}
 			}

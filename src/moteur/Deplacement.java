@@ -39,6 +39,7 @@ public class Deplacement {
 	public boolean moveLeft() {
 		if (this.positionX >= 1) {
 			this.positionX = this.positionX - 1;
+			setNbDeplacHum(getNbDeplacHum()+1);
 			return true;
 		} else {
 			return false;
@@ -48,6 +49,7 @@ public class Deplacement {
 	public boolean moveRight() {
 		if (this.positionX < 19) {
 			this.positionX = this.positionX + 1;
+			setNbDeplacHum(getNbDeplacHum()+1);
 			return true;
 		} else {
 			return false;
@@ -57,6 +59,7 @@ public class Deplacement {
 	public boolean moveUp() {
 		if (this.positionY >= 1) {
 			this.positionY = this.positionY - 1;
+			setNbDeplacHum(getNbDeplacHum()+1);
 			return true;
 		} else {
 			return false;
@@ -66,6 +69,7 @@ public class Deplacement {
 	public boolean moveDown() {
 		if (this.positionY < 19) {
 			this.positionY = this.positionY + 1;
+			setNbDeplacHum(getNbDeplacHum()+1);
 			return true;
 		} else {
 			return false;
