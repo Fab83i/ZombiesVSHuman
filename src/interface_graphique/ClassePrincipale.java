@@ -13,7 +13,7 @@ public class ClassePrincipale {
 		
 		MenuInit menu = new MenuInit();
 		
-	//	Case caseDepart = new Case() ;
+	//	Case caseDepart = new Case() ;grg
 
 	}
 
