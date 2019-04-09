@@ -120,6 +120,10 @@ public class MaJFrame extends JFrame implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			jeu.moveUp();
 		}
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			System.out.println("ça marche");
+			//jeu.entree(); à faire 
+		}
 
 	}
 
