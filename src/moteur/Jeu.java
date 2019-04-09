@@ -131,7 +131,7 @@ public class Jeu {
 
 
 
-	public void faireUnTour (ArrayList<Zombie> zombies,Jeu game) {
+	public void faireUnTour (ArrayList<Zombie> zombies,Jeu game, Case caseArrivee) {
 		int i;
 		if (game.getMarche()==true) {
 			System.out.println("A vous de jouer");
