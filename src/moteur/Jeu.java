@@ -254,8 +254,15 @@ public class Jeu {
 
 
 	public void entree() {
-
-
+		
+		Iterator<Zombie> itr = zombies.iterator();
+		while (itr.hasNext()) {
+			Zombie z = itr.next();
+			z.moveZomb(z, heros);
+		}
+		mjf.repaint();
+		mjf.resetNbMove();
+	}
 
 
 
