@@ -36,7 +36,7 @@ public class Jeu {
 				boolean dejaPris = true;
 				while (dejaPris == true) {
 					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
-					int randomY = (int) Math.ceil(Math.random() * 20) - 1;
+					int randomY = (int) Math.ceil(Math.random() * 18) - 1;
 					dejaPris = false;
 					Iterator<Zombie> itr = zombies.iterator();
 					while (itr.hasNext()) {
@@ -56,7 +56,7 @@ public class Jeu {
 				boolean dejaPris = true;
 				while (dejaPris == true) {
 					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
-					int randomY = (int) Math.ceil(Math.random() * 20) - 1;
+					int randomY = (int) Math.ceil(Math.random() * 18) - 1;
 					dejaPris = false;
 					Iterator<Zombie> itr = zombies.iterator();
 					while (itr.hasNext()) {
@@ -76,7 +76,7 @@ public class Jeu {
 				boolean dejaPris = true;
 				while (dejaPris == true) {
 					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
-					int randomY = (int) Math.ceil(Math.random() * 20) - 1;
+					int randomY = (int) Math.ceil(Math.random() * 18) - 1;
 					dejaPris = false;
 					Iterator<Zombie> itr = zombies.iterator();
 					while (itr.hasNext()) {
@@ -93,7 +93,7 @@ public class Jeu {
 			}
 		}
 		if (selectedLevel == 3) {
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 100; i++) {
 				boolean dejaPris = true;
 				while (dejaPris == true) {
 					int randomX = (int) Math.ceil(Math.random() * 20) - 1;

@@ -217,19 +217,19 @@ public class Deplacement {
 			if (zombie1.getPositionX() == heros.getPositionX()) {
 				if (zombie1.getPositionY() > heros.getPositionY()) {
 					zombie1.moveUp();
-					//zombie1.moveUp();
+					zombie1.moveUp();
 				} else {
 					zombie1.moveDown();
-					//zombie1.moveDown();
+					zombie1.moveDown();
 				}
 			}
 			if (zombie1.getPositionY() == heros.getPositionY()) {
 				if (zombie1.getPositionX() > heros.getPositionX()) {
 					zombie1.moveLeft();
-					//zombie1.moveLeft();
+					zombie1.moveLeft();
 				} else {
 					zombie1.moveRight();
-					//zombie1.moveRight();
+					zombie1.moveRight();
 				}
 			}
 			if (zombie1.getPositionX() != heros.getPositionX() && zombie1.getPositionY() != heros.getPositionY()) {
@@ -242,18 +242,18 @@ public class Deplacement {
 		}
 			
 		}
-		if(heros.getPositionX() - zombie1.getPositionX() <= 2) {
-			zombie1.moveRight();
-		}
-		if(heros.getPositionX() - zombie1.getPositionX() <= - 2) {
-			zombie1.moveLeft();
-		}
-		if(heros.getPositionY() - zombie1.getPositionY() <= 2) {
-			zombie1.moveDown();
-		}
-		if(heros.getPositionY() - zombie1.getPositionY() <= - 2) {
-			zombie1.moveUp();
-		}
+//		if(heros.getPositionX() - zombie1.getPositionX() <= 2) {
+//			zombie1.moveRight();
+//		}
+//		if(heros.getPositionX() - zombie1.getPositionX() <= - 2) {
+//			zombie1.moveLeft();
+//		}
+//		if(heros.getPositionY() - zombie1.getPositionY() <= 2) {
+//			zombie1.moveDown();
+//		}
+//		if(heros.getPositionY() - zombie1.getPositionY() <= - 2) {
+//			zombie1.moveUp();
+//		}
 		if (zombie1.isHumain(heros,nbMov) == false) {
 			zombie1.moveRandom();
 		}
