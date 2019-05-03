@@ -158,8 +158,8 @@ public class MaJFrame extends JFrame implements KeyListener {
 			jeu.entree();
 			
 
-			//Variable si la partie est terminée à remplacer dans false
-			if(false) {
+			//Variable si la partie est terminée à remplacer dans false A REVOIR
+			if(jeu.getMarche() == false) {
 				MenuInit retour = new MenuInit();
 				retour.setVisible(true);
 				MaJFrame.this.setVisible(false);

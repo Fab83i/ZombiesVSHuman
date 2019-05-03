@@ -114,9 +114,6 @@ public class Jeu {
 
 	}
 	
-	
-	
-	
 
 
 
@@ -249,8 +246,21 @@ public class Jeu {
 	}
 	
 	
+	//A REVOIR 
+	public void finDuJeu() {
+		Iterator<Zombie> itr = zombies.iterator();
+		while (itr.hasNext()) {
+			Zombie z = itr.next();
+			if (heros.getPositionX() == z.getPositionX() && heros.getPositionY() == z.getPositionY()) {
+				this.marche = false;
+			}
+		}
+		if (heros.getPositionX() == caseArrivee.getPositionX() && heros.getPositionY() == caseArrivee.getPositionY()) {
+				this.marche = false;
+			}
+	
 
 
 
 
-}
+	}}
