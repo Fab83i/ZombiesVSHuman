@@ -36,13 +36,7 @@ public class Case extends Deplacement {
 		this.positionY = positionY;
 	}
 
-	// Positionne la case finale
 
-//	public void PositionCaseArrive() {
-//		this.positionX = (int) Math.ceil(Math.random()*20);
-//		this.positionY = (int) Math.ceil(Math.random()*20);
-//	}
-	
 	
 	
 	

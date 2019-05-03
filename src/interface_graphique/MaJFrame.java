@@ -19,6 +19,7 @@ import moteur.Humain;
 import moteur.Jeu;
 import moteur.Zombie;
 import moteur.Case;
+import moteur.Deplacement;
 
 public class MaJFrame extends JFrame implements KeyListener {
 	private JPanel contentPane;
@@ -36,6 +37,10 @@ public class MaJFrame extends JFrame implements KeyListener {
 		return selectedLevel;
 	}
 	
+	public int getNbMove() {
+		return nbMove;
+	}
+	
 	public void resetNbMove() {
 		this.nbMove = 0;
 	}
@@ -50,6 +55,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 
 		this.sexe = sexeP;
 		this.selectedLevel = selLevelP;
+		
 
 		// System.out.println("sel " + selectedLevel + " sexe " + sexe );
 

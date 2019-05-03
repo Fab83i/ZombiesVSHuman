@@ -20,6 +20,7 @@ public class Jeu {
 		caseArrivee = new Case(ran , 0);
 		this.mjf=mjf;
 		
+		
 		System.out.println(caseArrivee.getPositionX() + " " + caseArrivee.getPositionY());
 
 		// Création de l'humain
@@ -191,39 +192,21 @@ public class Jeu {
 	
 	public void moveRight() {
 		heros.moveRight();
-		/*
-		Iterator<Zombie> itr = zombies.iterator();
-		while (itr.hasNext()) {
-			Zombie z = itr.next();
-			z.moveZomb(z, heros);
-		}
-		*/
+		
 		mjf.repaint();
 		System.out.println("L'humain se trouve en " + heros.getPositionX() + "," + heros.getPositionY());
 	}
 	
 	public void moveUp() {
 		heros.moveUp();
-		/*
-		Iterator<Zombie> itr = zombies.iterator();
-		while (itr.hasNext()) {
-			Zombie z = itr.next();
-			z.moveZomb(z, heros);
-		}
-		*/
+		
 		mjf.repaint();
 		System.out.println("L'humain se trouve en " + heros.getPositionX() + "," + heros.getPositionY());
 	}
 	
 	public void moveDown() {
 		heros.moveDown();
-		/*
-		Iterator<Zombie> itr = zombies.iterator();
-		while (itr.hasNext()) {
-			Zombie z = itr.next();
-			z.moveZomb(z, heros);
-		}
-		*/
+		
 		mjf.repaint();
 		System.out.println("L'humain se trouve en " + heros.getPositionX() + "," + heros.getPositionY());
 	}
@@ -234,14 +217,14 @@ public class Jeu {
 			System.out.println("A vous de jouer");
 			if (heros.getTourHumain()==true) {
 				heros.coumptDepHum(heros);
-				heros.humBruyant();
+	
 			}
 			if (heros.getPositionX()==caseArrivee.getPositionX() && heros.getPositionY()==caseArrivee.getPositionY()) {
 				marche=false;
 			}
 			if (heros.getTourHumain()==false) {
 				for (i=0;i<zombies.size();i++){
-					zombies.get(i).moveZomb(zombies.get(i), heros);
+					zombies.get(i).moveZomb(zombies.get(i), heros, mjf.getNbMove());
 					if (heros.getPositionX()==zombies.get(i).getPositionX() && heros.getPositionY()==zombies.get(i).getPositionY()) {
 						marche=false;
 					}
@@ -250,7 +233,8 @@ public class Jeu {
 		}
 	}
 	
-
+	
+	
 
 
 	public void entree() {
@@ -258,11 +242,13 @@ public class Jeu {
 		Iterator<Zombie> itr = zombies.iterator();
 		while (itr.hasNext()) {
 			Zombie z = itr.next();
-			z.moveZomb(z, heros);
+			z.moveZomb(z, heros, mjf.getNbMove());
 		}
 		mjf.repaint();
 		mjf.resetNbMove();
 	}
+	
+	
 
 
 

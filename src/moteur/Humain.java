@@ -1,10 +1,13 @@
 package moteur;
 
+import interface_graphique.MaJFrame;
+
 public class Humain extends Deplacement{
 	
 	int nbTours;
 	String sexe;
 	boolean tourHumain, estBruyant;
+	private MaJFrame mjf;
 	
 	
 
@@ -84,19 +87,6 @@ public class Humain extends Deplacement{
 		super(positionX, positionY);
 	}
 	
-	public void humBruyant() { // Modifie le nombre de tour ou l'humain est bruyant
-		estBruyant = false;
-		if (getNbTours() != 0) {
-			setNbTours(nbTours-1);
-		}
-		if (nbDeplacHum == 2) {
-			estBruyant = true;
-			setNbTours(nbTours+1);
-		}
-		if (nbDeplacHum == 3) {
-			estBruyant = true;
-			setNbTours(nbTours+3);
-		}
-	}
+//	
 
 }

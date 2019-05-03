@@ -1,5 +1,7 @@
 package moteur;
 
+import interface_graphique.MaJFrame;
+
 public class Zombie extends Deplacement{
 	//boolean voirHumain;
 	boolean tourZomb;
@@ -33,21 +35,24 @@ public Zombie(int positionX, int positionY, boolean voirHumain, boolean tourZomb
 	}
 
 	
-public boolean isHumain(Humain heros){ //detecte la presence de l'humain
-	int i,j;
+public boolean isHumain(Humain heros, int nbMove){ //detecte la presence de l'humain
+	
 	boolean result;
 	result = false;
-	for (i=-2;i<3;i++) {
-		for (j=-2;j<3;j++) {
-			if (heros.getPositionX()==getPositionX() + i && heros.getPositionY()==getPositionY() + j && heros.getNbTours()!=0){
-				result = true;
-			}
-			
-		}
+	if (heros.getPositionX() <= getPositionX() + 2  && heros.getPositionY() <= getPositionY() + 2 ) {
+		result =true;
 	}
-	if (heros.estBruyant == true) {
+	
+	if (heros.getPositionX() >= getPositionX() - 2  && heros.getPositionY() >= getPositionY() - 2 ) {
+		result =true;
+	}
+	
+	if (nbMove>=2) {
 		result = true;
 	}
+	
+	
+	
 	return result;
 }
 	

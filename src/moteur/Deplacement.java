@@ -2,11 +2,14 @@ package moteur;
 
 import java.util.Random;
 
+import interface_graphique.MaJFrame;
+
 public class Deplacement {
 
 	int positionX;
 	int positionY;
 	int nbDeplacHum;
+	private MaJFrame mjf;
 
 	public Deplacement(int positionX, int positionY) {
 		this.positionX = positionX;
@@ -29,12 +32,7 @@ public class Deplacement {
 		return this.positionY;
 	}
 	
-//	public int getDistanceBetween(Deplacement e1, Deplacement e2) {
-//		int a = (e2.getPositionX() - e1.getPositionX()) * (e2.getPositionX() - e1.getPositionX());
-//		int b = (e2.getPositionY() - e1.getPositionY()) * (e2.getPositionY() - e1.getPositionY());
-//		int aplusb = a + b;
-//		return (int) Math.ceil(Math.sqrt(aplusb));
-//	}
+
 
 	public boolean moveLeft() {
 		if (this.positionX >= 1) {
@@ -88,7 +86,7 @@ public class Deplacement {
 			moveDown();
 	}
 
-	/*public void coumptDepHum(Humain heros) { // compte le nb de d�placement de l'humain par tour en modifiant la variable
+	public void coumptDepHum(Humain heros) { // compte le nb de d�placement de l'humain par tour en modifiant la variable
 										// nbDeplacHum
 		int k;
 		k = 0;
@@ -109,70 +107,159 @@ public class Deplacement {
 		setNbDeplacHum(k);
 		heros.setTourHumain(false);
 	}
-*/
-	public void moveZomb(Zombie zombie1, Humain heros) {
-		Random rd = new Random();
-		boolean k, m;
-		k = rd.nextBoolean();
-		m = rd.nextBoolean();
-		if (zombie1.isHumain(heros) == false) {
-			zombie1.moveRandom();
-		} else {
+
+//	public void moveZomb(Zombie zombie1, Humain heros) {
+//		Random rd = new Random();
+//		boolean k, m;
+//		k = rd.nextBoolean();
+//		m = rd.nextBoolean();
+//		if (zombie1.isHumain(heros) == false) {
+//			zombie1.moveRandom();
+//		} 
+//		
+//		else {
+//			if (mjf.getNbMove()>=2) {
+//				heros.estBruyant=true;
+//				
+//				if (zombie1.getPositionX() == heros.getPositionX()) {
+//					if (zombie1.getPositionY() > heros.getPositionY()) {
+//						zombie1.moveUp();
+//						zombie1.moveUp();
+//					} else {
+//						zombie1.moveDown();
+//						zombie1.moveDown();
+//					}
+//				}
+//				if (zombie1.getPositionY() == heros.getPositionY()) {
+//					if (zombie1.getPositionX() > heros.getPositionX()) {
+//						zombie1.moveLeft();
+//						zombie1.moveLeft();
+//					} else {
+//						zombie1.moveRight();
+//						zombie1.moveRight();
+//					}
+//				}
+//				if (zombie1.getPositionX() != heros.getPositionX() && zombie1.getPositionY() != heros.getPositionY()) {
+//					if (k == true) {
+//						if (zombie1.getPositionX() > heros.getPositionX()) {
+//							zombie1.moveLeft();
+//						} else {
+//							zombie1.moveRight();
+//						}
+//			}
+//				
+//			}
+//		
+//			if (zombie1.getPositionX() == heros.getPositionX()) {
+//				if (zombie1.getPositionY() > heros.getPositionY()) {
+//					zombie1.moveUp();
+//					zombie1.moveUp();
+//				} else {
+//					zombie1.moveDown();
+//					zombie1.moveDown();
+//				}
+//			}
+//			if (zombie1.getPositionY() == heros.getPositionY()) {
+//				if (zombie1.getPositionX() > heros.getPositionX()) {
+//					zombie1.moveLeft();
+//					zombie1.moveLeft();
+//				} else {
+//					zombie1.moveRight();
+//					zombie1.moveRight();
+//				}
+//			}
+//			if (zombie1.getPositionX() != heros.getPositionX() && zombie1.getPositionY() != heros.getPositionY()) {
+//				if (k == true) {
+//					if (zombie1.getPositionX() > heros.getPositionX()) {
+//						zombie1.moveLeft();
+//					} else {
+//						zombie1.moveRight();
+//					}
+//
+//				}
+//				if (k == false) {
+//					if (zombie1.getPositionY() > heros.getPositionY()) {
+//						zombie1.moveDown();
+//					} else {
+//						zombie1.moveUp();
+//					}
+//				}
+//				if (m == true) {
+//					if (zombie1.getPositionX() > heros.getPositionX()) {
+//						zombie1.moveLeft();
+//					} else {
+//						zombie1.moveRight();
+//					}
+//
+//				}
+//				if (m == false) {
+//					if (zombie1.getPositionY() > heros.getPositionY()) {
+//						zombie1.moveDown();
+//					} else {
+//						zombie1.moveUp();
+//					}
+//				}
+//			}
+//			heros.setTourHumain(true);
+//		}
+//			}
+//	}
+	
+	
+	public void moveZomb(Zombie zombie1, Humain heros, int nbMov) {
+		
+		System.out.println(zombie1.isHumain(heros, nbMov));
+		
+		
+		
+		if (zombie1.isHumain(heros,nbMov)==true) {
+			
 			if (zombie1.getPositionX() == heros.getPositionX()) {
 				if (zombie1.getPositionY() > heros.getPositionY()) {
 					zombie1.moveUp();
-					zombie1.moveUp();
+					//zombie1.moveUp();
 				} else {
 					zombie1.moveDown();
-					zombie1.moveDown();
+					//zombie1.moveDown();
 				}
 			}
 			if (zombie1.getPositionY() == heros.getPositionY()) {
 				if (zombie1.getPositionX() > heros.getPositionX()) {
 					zombie1.moveLeft();
-					zombie1.moveLeft();
+					//zombie1.moveLeft();
 				} else {
 					zombie1.moveRight();
-					zombie1.moveRight();
+					//zombie1.moveRight();
 				}
 			}
 			if (zombie1.getPositionX() != heros.getPositionX() && zombie1.getPositionY() != heros.getPositionY()) {
-				if (k == true) {
+				
 					if (zombie1.getPositionX() > heros.getPositionX()) {
 						zombie1.moveLeft();
 					} else {
 						zombie1.moveRight();
 					}
-
-				}
-				if (k == false) {
-					if (zombie1.getPositionY() > heros.getPositionY()) {
-						zombie1.moveDown();
-					} else {
-						zombie1.moveUp();
-					}
-				}
-				if (m == true) {
-					if (zombie1.getPositionX() > heros.getPositionX()) {
-						zombie1.moveLeft();
-					} else {
-						zombie1.moveRight();
-					}
-
-				}
-				if (m == false) {
-					if (zombie1.getPositionY() > heros.getPositionY()) {
-						zombie1.moveDown();
-					} else {
-						zombie1.moveUp();
-					}
-				}
-			}
-			heros.setTourHumain(true);
 		}
+			
+		}
+		if(heros.getPositionX() - zombie1.getPositionX() <= 2) {
+			zombie1.moveRight();
+		}
+		if(heros.getPositionX() - zombie1.getPositionX() <= - 2) {
+			zombie1.moveLeft();
+		}
+		if(heros.getPositionY() - zombie1.getPositionY() <= 2) {
+			zombie1.moveDown();
+		}
+		if(heros.getPositionY() - zombie1.getPositionY() <= - 2) {
+			zombie1.moveUp();
+		}
+		if (zombie1.isHumain(heros,nbMov) == false) {
+			zombie1.moveRandom();
+		}
+		
 	}
-	
-	
+		
 	
 	
 	
