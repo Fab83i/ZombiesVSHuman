@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import interface_graphique.MaJFrame;
+import interface_graphique.MenuInit;
 
 
 public class Jeu {
@@ -208,30 +209,7 @@ public class Jeu {
 		System.out.println("L'humain se trouve en " + heros.getPositionX() + "," + heros.getPositionY());
 	}
 	
-	public void faireUnTour () {
-		int i;
-		if (marche==true) {
-			System.out.println("A vous de jouer");
-			if (heros.getTourHumain()==true) {
-				heros.coumptDepHum(heros);
-	
-			}
-			if (heros.getPositionX()==caseArrivee.getPositionX() && heros.getPositionY()==caseArrivee.getPositionY()) {
-				marche=false;
-			}
-			if (heros.getTourHumain()==false) {
-				for (i=0;i<zombies.size();i++){
-					zombies.get(i).moveZomb(zombies.get(i), heros, mjf.getNbMove());
-					if (heros.getPositionX()==zombies.get(i).getPositionX() && heros.getPositionY()==zombies.get(i).getPositionY()) {
-						marche=false;
-					}
-				}
-			}
-		}
-	}
-	
-	
-	
+
 
 
 	public void entree() {
@@ -240,6 +218,10 @@ public class Jeu {
 		while (itr.hasNext()) {
 			Zombie z = itr.next();
 			z.moveZomb(z, heros, mjf.getNbMove());
+			if(getMarche() == false) {
+				MenuInit retour = new MenuInit();
+				retour.setVisible(true);
+			}
 		}
 		mjf.repaint();
 		mjf.resetNbMove();
@@ -247,6 +229,7 @@ public class Jeu {
 	
 	
 	//A REVOIR 
+	
 	public void finDuJeu() {
 		Iterator<Zombie> itr = zombies.iterator();
 		while (itr.hasNext()) {
@@ -263,4 +246,5 @@ public class Jeu {
 
 
 
-	}}
+	}
+	}

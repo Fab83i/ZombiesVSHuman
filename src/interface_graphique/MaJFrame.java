@@ -158,17 +158,19 @@ public class MaJFrame extends JFrame implements KeyListener {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			jeu.entree();
-			
-
-			//Variable si la partie est terminée à remplacer dans false A REVOIR
-			if(jeu.getMarche() == false) {
-				MenuInit retour = new MenuInit();
-				retour.setVisible(true);
-				MaJFrame.this.setVisible(false);
-			}
 		}
 
+			//Variable si la partie est terminée à remplacer dans false A REVOIR
+			
+//			if(jeu.getMarche() == false) {
+//				MenuInit retour = new MenuInit();
+//				retour.setVisible(true);
+//				MaJFrame.this.setVisible(false);
+//			}
+		
+
 	}
+	
 	
 	public void LectureMidi() throws Exception {
         Sequencer player;

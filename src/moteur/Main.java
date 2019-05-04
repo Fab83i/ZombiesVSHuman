@@ -12,9 +12,9 @@ public class Main {
 		//Jeu game = new Jeu();
 	
 		//Deplacement test = new Deplacement();
-		Case caseArrivee = new Case();
-	
-		caseArrivee.PositionCaseArrive();
+//		Case caseArrivee = new Case();
+//	
+//		caseArrivee.PositionCaseArrive();
 		 // System.out.println(caseArrivee.getPositionX()); Vérification
 		
 		// test.moveRandom();
