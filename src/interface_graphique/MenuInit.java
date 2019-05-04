@@ -75,9 +75,15 @@ public class MenuInit extends JFrame {
 				if (rdbtnHomme.isSelected()) sexe =0;
 				else sexe = 1;
 				
-				
+
 				MaJFrame mJF = new MaJFrame(selectedLevel, sexe);
 				mJF.setVisible(true);
+				try {
+					mJF.LectureMidi();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				MenuInit.this.setVisible(false);
 			}
 		});

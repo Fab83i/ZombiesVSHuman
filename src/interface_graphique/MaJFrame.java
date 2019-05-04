@@ -1,15 +1,18 @@
 package interface_graphique;
 
 import java.awt.BorderLayout;
+
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.sound.midi.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -81,6 +84,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 		btnRetour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuInit retour = new MenuInit();
+				
 				retour.setVisible(true);
 				MaJFrame.this.setVisible(false);
 			}
@@ -165,6 +169,19 @@ public class MaJFrame extends JFrame implements KeyListener {
 		}
 
 	}
+	
+	public void LectureMidi() throws Exception {
+        Sequencer player;
+        player = MidiSystem.getSequencer();
+
+        File monFichierMidi = new File("images/underlate.mid");
+        Sequence maSequence = MidiSystem.getSequence(monFichierMidi);
+
+        player.open(); //ouverture du sequencer
+        player.setSequence(maSequence);
+      player.start();  // lecture du morceau
+}
+	
 
 	@Override
 	public void keyTyped(KeyEvent e) {
