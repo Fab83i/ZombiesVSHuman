@@ -39,13 +39,10 @@ public boolean isHumain(Humain heros, int nbMove){ //detecte la presence de l'hu
 	
 	boolean result;
 	result = false;
-	if ((heros.getPositionX() - getPositionX()) <= 2  && (heros.getPositionY() -  getPositionY()) <=  + 2 ) {
+	if ((getPositionX() - heros.getPositionX() <= 2 && (getPositionX() - heros.getPositionX()) >= -2 && (getPositionY() -  heros.getPositionY()) <=  2 && (getPositionY() -  heros.getPositionY()) >= -2 )) {
 		result =true;
 	}
 	
-	if (heros.getPositionX() >= getPositionX() - 2  && heros.getPositionY() >= getPositionY() - 2 ) {
-		result =true;
-	}
 	
 	if (nbMove>=2) {
 		result = true;

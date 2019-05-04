@@ -9,7 +9,7 @@ public class Main {
 		
 		
 		
-		Jeu game = new Jeu();
+		//Jeu game = new Jeu();
 	
 		//Deplacement test = new Deplacement();
 		Case caseArrivee = new Case();
