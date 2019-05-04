@@ -120,6 +120,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			jeu.moveRight();
+			jeu.finDuJeu();
 			this.nbMove++;
 			if(this.nbMove >= 3) {
 				jeu.entree();
@@ -127,6 +128,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			jeu.moveLeft();
+			jeu.finDuJeu();
 			this.nbMove++;
 			if(this.nbMove >= 3) {
 				jeu.entree();
@@ -134,20 +136,16 @@ public class MaJFrame extends JFrame implements KeyListener {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			jeu.moveDown();
+			jeu.finDuJeu();
 			this.nbMove++;
 			if(this.nbMove >= 3) {
 				jeu.entree();
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			
 
-			//Variable si la partie est terminée à remplacer dans false
-			if(false) {
-				
-			}
-			
 			jeu.moveUp();
+			jeu.finDuJeu();
 			this.nbMove++;
 			if(this.nbMove >= 3) {
 				jeu.entree();

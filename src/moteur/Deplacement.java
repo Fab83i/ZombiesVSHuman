@@ -242,18 +242,18 @@ public class Deplacement {
 		}
 			
 		}
-//		if(heros.getPositionX() - zombie1.getPositionX() <= 2) {
-//			zombie1.moveRight();
-//		}
-//		if(heros.getPositionX() - zombie1.getPositionX() <= - 2) {
-//			zombie1.moveLeft();
-//		}
-//		if(heros.getPositionY() - zombie1.getPositionY() <= 2) {
-//			zombie1.moveDown();
-//		}
-//		if(heros.getPositionY() - zombie1.getPositionY() <= - 2) {
-//			zombie1.moveUp();
-//		}
+		if(heros.getPositionX() - zombie1.getPositionX() < 2) {
+			zombie1.moveRight();
+		}
+		if(heros.getPositionX() - zombie1.getPositionX() < - 2) {
+			zombie1.moveLeft();
+		}
+		if(heros.getPositionY() - zombie1.getPositionY() < 2) {
+			zombie1.moveDown();
+		}
+		if(heros.getPositionY() - zombie1.getPositionY() < - 2) {
+			zombie1.moveUp();
+		}
 		if (zombie1.isHumain(heros,nbMov) == false) {
 			zombie1.moveRandom();
 		}
