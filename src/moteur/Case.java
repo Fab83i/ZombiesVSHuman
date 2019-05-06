@@ -1,11 +1,7 @@
 package moteur;
 
 public class Case extends Deplacement {
-	int couleur,typeCase;
-	boolean libre;
-	
-	
-	
+
 	
 	
 	public Case(int positionX, int positionY) {

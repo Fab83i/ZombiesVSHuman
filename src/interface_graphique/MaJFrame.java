@@ -31,6 +31,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 	private JPanelDessin dessin;
 	private Jeu jeu;
 	private Integer nbMove = 0;
+	
 
 	public int getSexe() {
 		return sexe;
@@ -47,6 +48,10 @@ public class MaJFrame extends JFrame implements KeyListener {
 	public void resetNbMove() {
 		this.nbMove = 0;
 	}
+	
+	
+	
+	
 
 	public MaJFrame(int selLevelP, int sexeP) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,7 +65,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 		this.selectedLevel = selLevelP;
 		
 
-		// System.out.println("sel " + selectedLevel + " sexe " + sexe );
+
 
 		JPanel view = new JPanel();
 		contentPane.add(view, BorderLayout.CENTER);
@@ -82,11 +87,13 @@ public class MaJFrame extends JFrame implements KeyListener {
 
 		JButton btnRetour = new JButton("Menu");
 		btnRetour.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
 				MenuInit retour = new MenuInit();
-				
 				retour.setVisible(true);
+				jeu.setMusic(true);                                // La musique ne s'arrete pas
 				MaJFrame.this.setVisible(false);
+				
 			}
 		});
 		retour.add(btnRetour);
@@ -123,50 +130,70 @@ public class MaJFrame extends JFrame implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			jeu.moveRight();
-			jeu.finDuJeu();
-			this.nbMove++;
-			if(this.nbMove >= 3) {
-				jeu.entree();
+			if(jeu.getMarche() == true) {
+				jeu.moveRight();
+				try {
+					lectureDep();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				this.nbMove++;
+				if(this.nbMove >= 3) {
+					jeu.entree();
+				}
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			jeu.moveLeft();
-			jeu.finDuJeu();
-			this.nbMove++;
-			if(this.nbMove >= 3) {
-				jeu.entree();
+
+			if(jeu.getMarche() == true) {
+				try {
+					lectureDep();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				jeu.moveLeft();
+				this.nbMove++;
+				if(this.nbMove >= 3) {
+					jeu.entree();
+				}
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			jeu.moveDown();
-			jeu.finDuJeu();
-			this.nbMove++;
-			if(this.nbMove >= 3) {
-				jeu.entree();
+			if(jeu.getMarche() == true) {
+				try {
+					lectureDep();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				jeu.moveDown();
+				this.nbMove++;
+				if(this.nbMove >= 3) {
+					jeu.entree();
+				}
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
-
-			jeu.moveUp();
-			jeu.finDuJeu();
-			this.nbMove++;
-			if(this.nbMove >= 3) {
-				jeu.entree();
+			if(jeu.getMarche() == true) {
+				try {
+					lectureDep();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				jeu.moveUp();
+				this.nbMove++;
+				if(this.nbMove >= 3) {
+					jeu.entree();
+				}
 			}
 			
 		}
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			jeu.entree();
 		}
-
-			//Variable si la partie est terminée à remplacer dans false A REVOIR
-			
-//			if(jeu.getMarche() == false) {
-//				MenuInit retour = new MenuInit();
-//				retour.setVisible(true);
-//				MaJFrame.this.setVisible(false);
-//			}
 		
 
 	}
@@ -176,15 +203,74 @@ public class MaJFrame extends JFrame implements KeyListener {
         Sequencer player;
         player = MidiSystem.getSequencer();
 
-        File monFichierMidi = new File("images/underlate.mid");
+        File monFichierMidi = new File("images/pacman_beginning.mid");
         Sequence maSequence = MidiSystem.getSequence(monFichierMidi);
 
-        player.open(); //ouverture du sequencer
+        player.open();                           //ouverture du sequencer
         player.setSequence(maSequence);
-      player.start();  // lecture du morceau
+      player.start();                            // lecture du morceau
+      System.out.println("La musique est maintenant "+jeu.isMusic());
+
+      if (jeu.isMusic() == true) {
+    	  player.stop();
+    	  
+      }
+      
 }
 	
+	public void lectureDep() throws Exception {
+        Sequencer player;
+        player = MidiSystem.getSequencer();
 
+        File monFichierMidi = new File("images/smb_saut.wav.mid");
+        Sequence maSequence = MidiSystem.getSequence(monFichierMidi);
+
+        player.open();                           //ouverture du sequencer
+        player.setSequence(maSequence);
+      player.start();                            // lecture du morceau
+      System.out.println("La musique est maintenant "+jeu.isMusic());
+
+      if (jeu.isMusic() == true) {
+    	  player.stop();
+    	  
+      }
+      
+}
+	
+	public void lectureMort() throws Exception {
+        Sequencer player;
+        player = MidiSystem.getSequencer();
+
+        File monFichierMidi = new File("images/pacman_death.mid");
+        Sequence maSequence = MidiSystem.getSequence(monFichierMidi);
+
+        player.open();                           //ouverture du sequencer
+        player.setSequence(maSequence);
+      player.start();                            // lecture du morceau
+
+      if (jeu.isMusic() == true) {
+    	  player.stop();
+    	  
+      }
+      
+}
+	public void lectureVict() throws Exception {
+        Sequencer player;
+        player = MidiSystem.getSequencer();
+
+        File monFichierMidi = new File("images/smb3_1-up.wav.mid");
+        Sequence maSequence = MidiSystem.getSequence(monFichierMidi);
+
+        player.open();                           //ouverture du sequencer
+        player.setSequence(maSequence);
+      player.start();                            // lecture du morceau
+
+      if (jeu.isMusic() == true) {
+    	  player.stop();
+    	  
+      }
+      
+}
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub

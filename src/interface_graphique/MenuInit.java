@@ -1,26 +1,23 @@
 package interface_graphique;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
-import javax.swing.JList;
-import javax.swing.JRadioButton;
-import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.AbstractButton;
 import javax.swing.AbstractListModel;
 import javax.swing.ButtonGroup;
-import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.EmptyBorder;
 
 public class MenuInit extends JFrame {
 
@@ -64,32 +61,7 @@ public class MenuInit extends JFrame {
 		Menu.add(choix_categories, BorderLayout.EAST);
 		choix_categories.setLayout(new GridLayout(1, 3, 0, 0));
 		
-		
-		// Afficher MaJFrame grace au button jouer
-		
-		JButton Jouer = new JButton("Jouer");
-		Jouer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int selectedLevel = list.getSelectedIndex();
-				int sexe = -1;
-				if (rdbtnHomme.isSelected()) sexe =0;
-				else sexe = 1;
-				
 
-				MaJFrame mJF = new MaJFrame(selectedLevel, sexe);
-				mJF.setVisible(true);
-				try {
-					mJF.LectureMidi();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				MenuInit.this.setVisible(false);
-			}
-		});
-		
-		
-		choix_categories.add(Jouer);
 		
 		JPanel parametres = new JPanel();
 		Menu.add(parametres, BorderLayout.CENTER);
@@ -99,7 +71,7 @@ public class MenuInit extends JFrame {
 		parametres.add(difficulte);
 		difficulte.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JLabel lblNewLabel = new JLabel("Chosis ta difficulté : ");
+		JLabel lblNewLabel = new JLabel("Choisis ta difficulté : ");
 		difficulte.add(lblNewLabel);
 		
 	 list = new JList();
@@ -126,22 +98,61 @@ public class MenuInit extends JFrame {
 		
 		
 	 rdbtnHomme = new JRadioButton("Homme");
-		rdbtnHomme.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+	 rdbtnHomme.addActionListener(new ActionListener() {
+	 	public void actionPerformed(ActionEvent e) {
+	 		lblChoisisTonSexe.setForeground(Color.BLACK);
+	 	}
+	 });
 		sexe.add(rdbtnHomme);
 		
 
 		
 		 JRadioButton rdbtnFemme = new JRadioButton("Femme");
+		 rdbtnFemme.addActionListener(new ActionListener() {
+		 	public void actionPerformed(ActionEvent e) {
+		 		lblChoisisTonSexe.setForeground(Color.BLACK);
+		 	}
+		 });
 		sexe.add(rdbtnFemme);
 		
 	 group = new ButtonGroup();
 		group.add(rdbtnHomme);
 		group.add(rdbtnFemme);
+		
+		
+		
+		// Afficher MaJFrame grace au button jouer
+		
+		JButton Jouer = new JButton("Jouer");
+		Jouer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedLevel = list.getSelectedIndex();
+				int sexe = -1;
+				if (rdbtnHomme.isSelected()) sexe =0;
+				if (rdbtnFemme.isSelected()) sexe =1;
+				if(sexe == -1) {
+					lblChoisisTonSexe.setForeground(Color.RED);
+				}
+				else {
+					MaJFrame mJF = new MaJFrame(selectedLevel, sexe);
+					mJF.setVisible(true);
+					try {
+						mJF.LectureMidi();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					MenuInit.this.setVisible(false);
+				}
+			}
+		});
+		
+		
+		choix_categories.add(Jouer);
+		
 	}
+	
+	
 	
 	
 }

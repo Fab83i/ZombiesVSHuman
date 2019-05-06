@@ -1,6 +1,11 @@
 package moteur;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.Sequence;
+import javax.sound.midi.Sequencer;
 
 import interface_graphique.MaJFrame;
 import interface_graphique.MenuInit;
@@ -13,6 +18,15 @@ public class Jeu {
 	private Humain heros;
 	private Case caseArrivee;
 	private MaJFrame mjf;
+	private boolean music;
+
+	public boolean isMusic() {
+		return music;
+	}
+
+	public void setMusic(boolean music) {
+		this.music = music;
+	}
 	
 	public Jeu(MaJFrame mjf, int selectedLevel) {
 		this.difficulte = 0;
@@ -20,6 +34,7 @@ public class Jeu {
 		int ran = (int) Math.ceil(Math.random() * 20) - 1;
 		caseArrivee = new Case(ran , 0);
 		this.mjf=mjf;
+		
 		
 		
 		System.out.println(caseArrivee.getPositionX() + " " + caseArrivee.getPositionY());
@@ -47,7 +62,7 @@ public class Jeu {
 						}
 					}
 					if (dejaPris == false)
-						zombies.add(new Zombie(randomX, randomY, false, false));
+						zombies.add(new Zombie(randomX, randomY, false));
 				}
 			}
 		}
@@ -67,7 +82,7 @@ public class Jeu {
 						}
 					}
 					if (dejaPris == false)
-						zombies.add(new Zombie(randomX, randomY, false, false));
+						zombies.add(new Zombie(randomX, randomY, false));
 				}
 			}
 		}
@@ -87,18 +102,18 @@ public class Jeu {
 						}
 					}
 					if (dejaPris == false) {
-						zombies.add(new Zombie(randomX, randomY, false, false));
+						zombies.add(new Zombie(randomX, randomY, false));
 						System.out.println("Zombie généré en : " + randomX + "," + randomY);
 					}
 				}
 			}
 		}
 		if (selectedLevel == 3) {
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 20; i++) {
 				boolean dejaPris = true;
 				while (dejaPris == true) {
 					int randomX = (int) Math.ceil(Math.random() * 20) - 1;
-					int randomY = (int) Math.ceil(Math.random() * 18) - 1;
+					int randomY = (int) Math.ceil(Math.random() * 17) - 1;
 					dejaPris = false;
 					Iterator<Zombie> itr = zombies.iterator();
 					while (itr.hasNext()) {
@@ -108,7 +123,7 @@ public class Jeu {
 						}
 					}
 					if (dejaPris == false)
-						zombies.add(new Zombie(randomX, randomY, false, false));
+						zombies.add(new Zombie(randomX, randomY, false));
 				}
 			}
 		}
@@ -117,7 +132,7 @@ public class Jeu {
 	
 
 
-
+	
 	
 	
 	public void moveRandom() {
@@ -210,21 +225,27 @@ public class Jeu {
 	}
 	
 
-
+// Il faut modifiert l'arret automatique du jeu. Ne s'arrete pas lorsque l'humain est mangé
 
 	public void entree() {
-		
-		Iterator<Zombie> itr = zombies.iterator();
-		while (itr.hasNext()) {
-			Zombie z = itr.next();
-			z.moveZomb(z, heros, mjf.getNbMove());
-			if(getMarche() == false) {
-				MenuInit retour = new MenuInit();
-				retour.setVisible(true);
-			}
+
+		if(this.getMarche() == false) {
+			MenuInit retour = new MenuInit();
+			retour.setVisible(true);
+			mjf.setVisible(false);
 		}
-		mjf.repaint();
-		mjf.resetNbMove();
+		else {
+			Iterator<Zombie> itr = zombies.iterator();
+			while (itr.hasNext()) {
+				Zombie z = itr.next();
+				z.moveZomb(z, heros, mjf.getNbMove());
+			}
+			mjf.repaint();
+			mjf.resetNbMove();
+			
+			this.finDuJeu();
+		}
+		
 	}
 	
 	
@@ -236,10 +257,22 @@ public class Jeu {
 			Zombie z = itr.next();
 			if (heros.getPositionX() == z.getPositionX() && heros.getPositionY() == z.getPositionY()) {
 				this.marche = false;
+				try {
+					mjf.lectureMort();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		if (heros.getPositionX() == caseArrivee.getPositionX() && heros.getPositionY() == caseArrivee.getPositionY()) {
 				this.marche = false;
+				try {
+					mjf.lectureVict();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 	
 
@@ -247,4 +280,6 @@ public class Jeu {
 
 
 	}
+	
+	
 	}

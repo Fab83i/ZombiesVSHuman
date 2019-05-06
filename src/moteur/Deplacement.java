@@ -8,7 +8,6 @@ public class Deplacement {
 
 	int positionX;
 	int positionY;
-	int nbDeplacHum;
 	private MaJFrame mjf;
 
 	public Deplacement(int positionX, int positionY) {
@@ -16,13 +15,6 @@ public class Deplacement {
 		this.positionY = positionY;
 	}
 
-	public int getNbDeplacHum() {
-		return nbDeplacHum;
-	}
-
-	public void setNbDeplacHum(int nbDeplacHum) {
-		this.nbDeplacHum = nbDeplacHum;
-	}
 
 	public int getPositionX() {
 		return this.positionX;
@@ -37,7 +29,6 @@ public class Deplacement {
 	public boolean moveLeft() {
 		if (this.positionX >= 1) {
 			this.positionX = this.positionX - 1;
-			setNbDeplacHum(getNbDeplacHum()+1);
 			return true;
 		} else {
 			return false;
@@ -47,7 +38,6 @@ public class Deplacement {
 	public boolean moveRight() {
 		if (this.positionX < 19) {
 			this.positionX = this.positionX + 1;
-			setNbDeplacHum(getNbDeplacHum()+1);
 			return true;
 		} else {
 			return false;
@@ -57,7 +47,6 @@ public class Deplacement {
 	public boolean moveUp() {
 		if (this.positionY >= 1) {
 			this.positionY = this.positionY - 1;
-			setNbDeplacHum(getNbDeplacHum()+1);
 			return true;
 		} else {
 			return false;
@@ -67,7 +56,6 @@ public class Deplacement {
 	public boolean moveDown() {
 		if (this.positionY < 19) {
 			this.positionY = this.positionY + 1;
-			setNbDeplacHum(getNbDeplacHum()+1);
 			return true;
 		} else {
 			return false;
@@ -86,32 +74,8 @@ public class Deplacement {
 			moveDown();
 	}
 
-	public void coumptDepHum(Humain heros) { // compte le nb de d�placement de l'humain par tour en modifiant la variable
-										// nbDeplacHum
-		int k;
-		k = 0;
-		if(k<3) {
-			if (heros.moveRight() == true) {
-			k = k + 1;
-			}
-			if (heros.moveDown() == true) {
-			k = k + 1;
-			}
-			if (heros.moveLeft() == true) {
-			k = k + 1;
-			}
-			if (heros.moveUp() == true) {
-			k = k + 1;
-			}
-		}
-		setNbDeplacHum(k);
-		heros.setTourHumain(false);
-	}
 
 
-	
-
-	
 	
 public void moveZomb(Zombie zombie1, Humain heros, int nbMov) {
 		

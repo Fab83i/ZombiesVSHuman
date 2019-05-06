@@ -3,36 +3,20 @@ package moteur;
 import interface_graphique.MaJFrame;
 
 public class Zombie extends Deplacement{
-	//boolean voirHumain;
-	boolean tourZomb;
+	
 	
 
 
 
-public Zombie(int positionX, int positionY, boolean voirHumain, boolean tourZomb) {
+public Zombie(int positionX, int positionY, boolean voirHumain) {
 		super(positionX, positionY);
-		this.tourZomb = tourZomb;
+		
 	}
-
-
 
 	public Zombie(int positionX, int positionY) {
 	super(positionX, positionY);
 }
 
-
-
-
-
-
-	public boolean isTourZomb() {
-		return tourZomb;
-	}
-
-
-	public void setTourZomb(boolean tourZomb) {
-		this.tourZomb = tourZomb;
-	}
 
 	
 public boolean isHumain(Humain heros, int nbMove){ //detecte la presence de l'humain
@@ -43,12 +27,9 @@ public boolean isHumain(Humain heros, int nbMove){ //detecte la presence de l'hu
 		result =true;
 	}
 	
-	
 	if (nbMove>=2) {
 		result = true;
 	}
-	
-	
 	
 	return result;
 }
@@ -72,12 +53,6 @@ public void setPositionY(int positionY) {
 	this.positionY = positionY;
 }
 
-//public void manger(Humain heros, Jeu game){
-//	if (heros.getPositionX()==getPositionX() && heros.getPositionY()==getPositionY()) {
-//		game.setMarche(false);
-//		
-//	}
-//}
 
 
 
