@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import moteur.Humain;
 import moteur.Jeu;
+import moteur.Sons;
 import moteur.Zombie;
 import moteur.Case;
 import moteur.Deplacement;
@@ -31,7 +32,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 	private JPanelDessin dessin;
 	private Jeu jeu;
 	private Integer nbMove = 0;
-	
+	private Sons sons;
 
 	public int getSexe() {
 		return sexe;
@@ -101,7 +102,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 		
 	
 		jeu = new Jeu(this,selectedLevel);
-		
+		sons = new Sons();
 
 
 		dessin = new JPanelDessin(sexe, jeu);
@@ -153,6 +154,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+
 				jeu.moveLeft();
 				this.nbMove++;
 				if(this.nbMove >= 3) {
@@ -168,6 +170,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+
 				jeu.moveDown();
 				this.nbMove++;
 				if(this.nbMove >= 3) {
@@ -183,6 +186,7 @@ public class MaJFrame extends JFrame implements KeyListener {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+
 				jeu.moveUp();
 				this.nbMove++;
 				if(this.nbMove >= 3) {
@@ -198,6 +202,8 @@ public class MaJFrame extends JFrame implements KeyListener {
 
 	}
 	
+	
+	// Ci-dessous, deuxième méthode pour générer du son. Utilisé pour les déplacements car moins lourde
 	
 	public void LectureMidi() throws Exception {
         Sequencer player;

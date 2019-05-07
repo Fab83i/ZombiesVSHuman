@@ -19,10 +19,12 @@ public class Jeu {
 	private Case caseArrivee;
 	private MaJFrame mjf;
 	private boolean music;
+	private Sons son;
 
 	public boolean isMusic() {
 		return music;
 	}
+	
 
 	public void setMusic(boolean music) {
 		this.music = music;
@@ -34,6 +36,7 @@ public class Jeu {
 		int ran = (int) Math.ceil(Math.random() * 20) - 1;
 		caseArrivee = new Case(ran , 0);
 		this.mjf=mjf;
+		
 		
 		
 		
@@ -127,6 +130,8 @@ public class Jeu {
 				}
 			}
 		}
+		son = new Sons();
+
 
 	}
 	
@@ -158,7 +163,6 @@ public class Jeu {
 		
 	}
 
-	
 	
 	
 	
@@ -251,28 +255,19 @@ public class Jeu {
 	
 	//A REVOIR 
 	
+	
 	public void finDuJeu() {
 		Iterator<Zombie> itr = zombies.iterator();
 		while (itr.hasNext()) {
 			Zombie z = itr.next();
 			if (heros.getPositionX() == z.getPositionX() && heros.getPositionY() == z.getPositionY()) {
 				this.marche = false;
-				try {
-					mjf.lectureMort();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				son.musicMortWav();
 			}
 		}
 		if (heros.getPositionX() == caseArrivee.getPositionX() && heros.getPositionY() == caseArrivee.getPositionY()) {
 				this.marche = false;
-				try {
-					mjf.lectureVict();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				son.musicVictWav();
 			}
 	
 

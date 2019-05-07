@@ -19,12 +19,15 @@ import javax.swing.JRadioButton;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 
+import moteur.Sons;
+
 public class MenuInit extends JFrame {
 
 	private JPanel contentPane;
 	private ButtonGroup group;
 	private JList list;
 	private AbstractButton rdbtnHomme;
+	private Sons son;
 
 	/**
 	 * Launch the application.
@@ -41,6 +44,7 @@ public class MenuInit extends JFrame {
 			}
 		});
 	}
+	
 
 	/**
 	 * Create the frame.
@@ -61,7 +65,6 @@ public class MenuInit extends JFrame {
 		Menu.add(choix_categories, BorderLayout.EAST);
 		choix_categories.setLayout(new GridLayout(1, 3, 0, 0));
 		
-
 		
 		JPanel parametres = new JPanel();
 		Menu.add(parametres, BorderLayout.CENTER);
@@ -122,6 +125,8 @@ public class MenuInit extends JFrame {
 		
 		
 		// Afficher MaJFrame grace au button jouer
+		son = new Sons();
+
 		
 		JButton Jouer = new JButton("Jouer");
 		Jouer.addActionListener(new ActionListener() {
@@ -136,12 +141,7 @@ public class MenuInit extends JFrame {
 				else {
 					MaJFrame mJF = new MaJFrame(selectedLevel, sexe);
 					mJF.setVisible(true);
-					try {
-						mJF.LectureMidi();
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					son.musicDebutWav();
 					MenuInit.this.setVisible(false);
 				}
 			}
@@ -151,6 +151,7 @@ public class MenuInit extends JFrame {
 		choix_categories.add(Jouer);
 		
 	}
+	
 	
 	
 	
